@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burnout Prevention Agent</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🧠 Burnout Prevention Agent</h1>
+        <p class="subtitle">Analyze your burnout risk and get personalized recommendations</p>
+
+        <div class="card">
+            <h2>Input Your Data</h2>
+            <form id="burnoutForm">
+                <div class="form-group">
+                    <label for="stress">Stress Level (0-10):</label>
+                    <input type="number" id="stress" name="stress" min="0" max="10" value="5" required>
+                    <span class="hint">0 = No stress, 10 = Extreme stress</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="work_hours">Work Hours Today:</label>
+                    <input type="number" id="work_hours" name="work_hours" min="0" max="24" value="8" required>
+                    <span class="hint">Total hours worked today</span>
+                </div>
+
+                <button type="submit" id="analyzeBtn">Analyze Burnout Risk</button>
+            </form>
+        </div>
+
+        <div id="processing" class="processing hidden">
+            <div class="spinner"></div>
+            <p>Processing your data through LangGraph...</p>
+        </div>
+
+        <div id="results" class="card results hidden">
+            <h2>Analysis Results</h2>
+            <div class="result-content">
+                <div class="risk-badge" id="riskBadge">
+                    <span id="riskLevel"></span>
+                </div>
+                <div class="recommendation">
+                    <h3>Recommendation:</h3>
+                    <p id="suggestion"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="endpoints">
+            <h3>Available Endpoints:</h3>
+            <ul>
+                <li><code>GET /</code> - Home page (this demo interface)</li>
+                <li><code>GET /status</code> or <code>GET /api/v1/status</code> - Agent status check</li>
+                <li><code>POST /task</code> or <code>POST /api/v1/task</code> - Supervisor task endpoint</li>
+                <li><code>POST /demo</code> - Demo endpoint (used by this page)</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('burnoutForm');
+        const processing = document.getElementById('processing');
+        const results = document.getElementById('results');
+        const analyzeBtn = document.getElementById('analyzeBtn');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Get form data
+            const stress = parseInt(document.getElementById('stress').value);
+            const work_hours = parseInt(document.getElementById('work_hours').value);
+
+            // Show processing, hide results
+            processing.classList.remove('hidden');
+            results.classList.add('hidden');
+            analyzeBtn.disabled = true;
+
+            try {
+                // Call the /demo endpoint
+                const response = await fetch('/demo', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ stress, work_hours })
+                });
+
+                const data = await response.json();
+
+                // Hide processing
+                processing.classList.add('hidden');
+                analyzeBtn.disabled = false;
+
+                if (response.ok) {
+                    // Display results
+                    displayResults(data);
+                } else {
+                    alert('Error: ' + (data.error || 'Unknown error'));
+                }
+            } catch (error) {
+                processing.classList.add('hidden');
+                analyzeBtn.disabled = false;
+                alert('Network error: ' + error.message);
+            }
+        });
+
+        function displayResults(data) {
+            const riskLevel = data.risk_level || 'unknown';
+            const suggestion = data.suggestion || 'No recommendation available';
+
+            // Update risk badge
+            const riskBadge = document.getElementById('riskBadge');
+            const riskLevelSpan = document.getElementById('riskLevel');
+            riskLevelSpan.textContent = riskLevel.toUpperCase() + ' RISK';
+            
+            // Set badge color based on risk
+            riskBadge.className = 'risk-badge risk-' + riskLevel;
+
+            // Update suggestion
+            document.getElementById('suggestion').textContent = suggestion;
+
+            // Show results
+            results.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

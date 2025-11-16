@@ -28,10 +28,17 @@ class BurnoutPreventionAgent(AbstractWorkerAgent):
         # 2. Prepare the initial state for the graph
         initial_state = BurnoutState(
             input_data=task_data,
-            history=current_history,  # <-- Pass the history into the graph
+            history=current_history,
             burnout_risk="unknown",
             is_trend=False,
-            recommendation="",
+            
+            # --- ADD THESE ---
+            key_factors=[],
+            empathetic_response="",
+            resource_links=[],
+            
+            # --- Keep these ---
+            recommendation="", # This is no longer used, but good to have
             final_response={}
         )
 

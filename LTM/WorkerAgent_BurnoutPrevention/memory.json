@@ -37,5 +37,190 @@
       "suggestion": "A trend of medium-to-high stress has been detected. Please escalate to a manager or HR.",
       "analysis_complete": true
     }
+  },
+  {
+    "timestamp": "...",
+    "input_data": {
+      "employee_id": "user_xyz",
+      "stress": 8,
+      "work_hours": 9,
+      "sleep_hours": 5,
+      "mood": "frustrated"
+    },
+    "final_response": {
+      "risk_level": "medium",
+      "empathetic_suggestion": "I'm sorry to hear you're feeling this way. Please remember to take regular breaks.",
+      "key_factors": [
+        "high_stress",
+        "moderate_overtime",
+        "poor_sleep",
+        "negative_mood"
+      ],
+      "resource_links": [
+        {
+          "title": "Tips for Better Sleep",
+          "url": "/resources/sleep"
+        },
+        {
+          "title": "Guided Meditation App",
+          "url": "/resources/meditation"
+        }
+      ],
+      "is_trend": false,
+      "analysis_complete": true
+    }
+  },
+  {
+    "timestamp": "...",
+    "input_data": {
+      "employee_id": "user_xyz",
+      "stress": 8,
+      "work_hours": 9,
+      "sleep_hours": 5,
+      "mood": "frustrated"
+    },
+    "final_response": {
+      "risk_level": "high",
+      "empathetic_suggestion": "I'm sorry to hear you're feeling this way. Please remember to take regular breaks.",
+      "key_factors": [
+        "high_stress"
+      ],
+      "resource_links": [
+        {
+          "title": "Guided Meditation App",
+          "url": "/resources/meditation"
+        }
+      ],
+      "is_trend": false,
+      "analysis_complete": true
+    }
+  },
+  {
+    "timestamp": "...",
+    "input_data": {
+      "employee_id": "user_xyz",
+      "stress": 8,
+      "work_hours": 9,
+      "sleep_hours": 5,
+      "mood": "frustrated"
+    },
+    "final_response": {
+      "risk_level": "high",
+      "empathetic_suggestion": "I'm sorry to hear you're feeling this way. Please remember to take regular breaks.",
+      "key_factors": [
+        "high_stress",
+        "moderate_overtime",
+        "poor_sleep",
+        "negative_mood"
+      ],
+      "resource_links": [
+        {
+          "title": "Tips for Better Sleep",
+          "url": "/resources/sleep"
+        },
+        {
+          "title": "Guided Meditation App",
+          "url": "/resources/meditation"
+        }
+      ],
+      "is_trend": false,
+      "analysis_complete": true
+    }
+  },
+  {
+    "timestamp": "...",
+    "input_data": {
+      "employee_id": "user_xyz",
+      "stress": 8,
+      "work_hours": 9,
+      "sleep_hours": 5,
+      "mood": "frustrated"
+    },
+    "final_response": {
+      "risk_level": "high",
+      "empathetic_suggestion": "I'm sorry to hear you're feeling this way. Please remember to take regular breaks.",
+      "key_factors": [
+        "moderate_overtime",
+        "negative_mood",
+        "high_stress",
+        "poor_sleep"
+      ],
+      "resource_links": [
+        {
+          "title": "Tips for Better Sleep",
+          "url": "/resources/sleep"
+        },
+        {
+          "title": "Guided Meditation App",
+          "url": "/resources/meditation"
+        }
+      ],
+      "is_trend": false,
+      "analysis_complete": true
+    }
+  },
+  {
+    "timestamp": "...",
+    "input_data": {
+      "employee_id": "user_xyz",
+      "stress": 8,
+      "work_hours": 9,
+      "sleep_hours": 5,
+      "mood": "frustrated"
+    },
+    "final_response": {
+      "risk_level": "high",
+      "empathetic_suggestion": "I'm truly sorry to hear you're experiencing such a high risk of burnout, especially with the added weight of negative mood, high stress, and poor sleep. It's incredibly important to prioritize your well-being right now, and I strongly encourage you to utilize our wellness resources or discuss workload adjustments with your manager to find a healthier balance. Please know we're here to support you in taking these essential steps.",
+      "key_factors": [
+        "negative_mood",
+        "high_stress",
+        "poor_sleep",
+        "moderate_overtime"
+      ],
+      "resource_links": [
+        {
+          "title": "Tips for Better Sleep",
+          "url": "/resources/sleep"
+        },
+        {
+          "title": "Guided Meditation App",
+          "url": "/resources/meditation"
+        }
+      ],
+      "is_trend": false,
+      "analysis_complete": true
+    }
+  },
+  {
+    "timestamp": "...",
+    "input_data": {
+      "employee_id": "user_xyz",
+      "stress": 8,
+      "work_hours": 9,
+      "sleep_hours": 5,
+      "mood": "frustrated"
+    },
+    "final_response": {
+      "risk_level": "high",
+      "empathetic_suggestion": "It sounds like you're carrying a heavy load right now, and it's completely understandable that you're feeling a high risk of burnout given the stress, negative mood, and sleep challenges. Prioritizing your well-being is crucial; consider taking some time to recharge, even small breaks, and perhaps explore stress-reduction techniques or speak with a professional. Remember, we're here to support you in finding a healthier balance.",
+      "key_factors": [
+        "negative_mood",
+        "high_stress",
+        "poor_sleep",
+        "moderate_overtime"
+      ],
+      "resource_links": [
+        {
+          "title": "Tips for Better Sleep",
+          "url": "/resources/sleep"
+        },
+        {
+          "title": "Guided Meditation App",
+          "url": "/resources/meditation"
+        }
+      ],
+      "is_trend": false,
+      "analysis_complete": true
+    }
   }
 ]

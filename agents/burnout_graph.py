@@ -1,10 +1,12 @@
-from typing import TypedDict, Literal
+from typing import TypedDict, Literal, List, Any
 from langgraph.graph import StateGraph, END
 
 # 1. Define the "State" that will be passed around
 class BurnoutState(TypedDict):
     input_data: dict  # e.g., {"stress": 8, "work_hours": 10}
+    history: List[dict] # Added this line for LTM
     burnout_risk: Literal["low", "medium", "high", "unknown"]
+    is_trend: bool
     recommendation: str
     final_response: dict
 
@@ -12,14 +14,40 @@ class BurnoutState(TypedDict):
 def analyze_risk(state: BurnoutState) -> BurnoutState:
     print("--- Node: Analyzing Risk ---")
     data = state['input_data']
+    history = state['history']
     stress = data.get('stress', 0)
     hours = data.get('work_hours', 0)
+    employee_id = data.get('employee_id', 'unknown_user') # To track history
 
     risk = "low"
+    state['is_trend'] = False
+
     if stress > 7 or hours > 10:
         risk = "high"
     elif stress > 4 or hours > 8:
         risk = "medium"
+
+    # --- NEW LTM Logic ---
+    if risk != "high":  # Only check history if current risk isn't already high
+        # Get this employee's past records
+        employee_history = [
+            entry for entry in history 
+            if entry.get('input_data', {}).get('employee_id') == employee_id
+        ]
+        
+        # Check for trends
+        if len(employee_history) >= 2:
+            # Check if the last 2 reports were 'medium' or 'high'
+            last_two_risks = [
+                entry.get('final_response', {}).get('risk_level') 
+                for entry in employee_history[-2:]
+            ]
+            
+            if all(r in ["medium", "high"] for r in last_two_risks) and risk == "medium":
+                print(f"--- LTM Check: Trend detected for {employee_id}. Elevating risk. ---")
+                risk = "high"
+                # We can even change the suggestion
+                state['is_trend'] = True
 
     state['burnout_risk'] = risk
     return state
@@ -27,9 +55,15 @@ def analyze_risk(state: BurnoutState) -> BurnoutState:
 def generate_suggestion(state: BurnoutState) -> BurnoutState:
     print("--- Node: Generating Suggestion ---")
     risk = state['burnout_risk']
+    is_trend = state['is_trend']
 
     if risk == "high":
-        state['recommendation'] = "High burnout risk detected. Please take a 15-minute walk and disconnect."
+        if is_trend:
+            # This is our new LTM-aware suggestion
+            state['recommendation'] = "A trend of medium-to-high stress has been detected. Please escalate to a manager or HR."
+        else:
+            # This is the original high-risk suggestion
+            state['recommendation'] = "High burnout risk detected. Please take a 15-minute walk and disconnect."
     elif risk == "medium":
         state['recommendation'] = "You are showing medium signs of burnout. Remember to take regular short breaks."
     else:

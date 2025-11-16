@@ -1,0 +1,41 @@
+[
+  {
+    "timestamp": "...",
+    "input_data": {
+      "employee_id": "user_abc",
+      "stress": 5,
+      "work_hours": 9
+    },
+    "final_response": {
+      "risk_level": "medium",
+      "suggestion": "You are showing medium signs of burnout. Remember to take regular short breaks.",
+      "analysis_complete": true
+    }
+  },
+  {
+    "timestamp": "...",
+    "input_data": {
+      "employee_id": "user_abc",
+      "stress": 6,
+      "work_hours": 8
+    },
+    "final_response": {
+      "risk_level": "medium",
+      "suggestion": "You are showing medium signs of burnout. Remember to take regular short breaks.",
+      "analysis_complete": true
+    }
+  },
+  {
+    "timestamp": "...",
+    "input_data": {
+      "employee_id": "user_abc",
+      "stress": 5,
+      "work_hours": 9
+    },
+    "final_response": {
+      "risk_level": "high",
+      "suggestion": "A trend of medium-to-high stress has been detected. Please escalate to a manager or HR.",
+      "analysis_complete": true
+    }
+  }
+]

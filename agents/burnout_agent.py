@@ -13,6 +13,8 @@ class BurnoutPreventionAgent(AbstractWorkerAgent):
         self._ltm_path = os.path.join("LTM", self._id, "memory.json")
         os.makedirs(os.path.dirname(self._ltm_path), exist_ok=True)
 
+    # In agents/burnout_agent.py
+
     def process_task(self, task_data: dict) -> dict:
         """
         This is the main logic.
@@ -20,23 +22,32 @@ class BurnoutPreventionAgent(AbstractWorkerAgent):
         """
         print(f"[{self._id}] processing task: {task_data}")
 
-        # 1. Check LTM first (as required by Project_SPM_MAS_Details.docx)
-        # For a burnout agent, maybe we're just logging past inputs?
-        # For this example, we'll just run the graph.
+        # 1. READ from LTM first
+        current_history = self.read_from_ltm() or []
 
-        # Prepare the initial state for the graph
+        # 2. Prepare the initial state for the graph
         initial_state = BurnoutState(
-            input_data=task_data, # e.g., {"stress": 8, ...}
+            input_data=task_data,
+            history=current_history,  # <-- Pass the history into the graph
             burnout_risk="unknown",
+            is_trend=False,
             recommendation="",
             final_response={}
         )
 
-        # 2. Run the LangGraph
+        # 3. Run the LangGraph
         final_state = burnout_app.invoke(initial_state)
+        
+        # 4. WRITE the result back to LTM
+        # Create a new log entry
+        log_entry = {
+            "timestamp": "...", # Add a real timestamp
+            "input_data": task_data,
+            "final_response": final_state['final_response']
+        }
+        self.write_to_ltm(log_entry) # This will append the new entry
 
-        # 3. Return the results
-        # This 'results' dict will be put into the "completion_report"
+        # 5. Return the results
         return final_state['final_response']
 
     # --- Required Methods from Abstract Class ---
@@ -51,32 +62,36 @@ class BurnoutPreventionAgent(AbstractWorkerAgent):
         # In our setup, the Flask return is the "send"
         pass
 
-    def write_to_ltm(self, key: str, value: any) -> bool:
-        """Writes data to a simple JSON file for LTM."""
+    # In agents/burnout_agent.py
+
+    def write_to_ltm(self, entry: dict) -> bool:
+        """Appends a new entry to the LTM JSON log."""
         try:
-            data = self.read_from_ltm("all") or {}
-            data[key] = value
+            # Read the entire history
+            history = self.read_from_ltm() or []
+            # Add the new entry
+            history.append(entry)
+            
+            # Write the entire history back
             with open(self._ltm_path, 'w') as f:
-                json.dump(data, f, indent=2)
-            print(f"[{self._id}] Wrote to LTM: {key}")
+                json.dump(history, f, indent=2)
+            
+            print(f"[{self._id}] Wrote new entry to LTM.")
             return True
         except Exception as e:
             print(f"[{self._id}] ERROR writing to LTM: {e}")
             return False
 
-    def read_from_ltm(self, key: str) -> any:
-        """Reads data from the LTM JSON file."""
+    def read_from_ltm(self) -> any:
+        """Reads the entire LTM log."""
         try:
             if not os.path.exists(self._ltm_path):
-                return None
-
+                return []  # Return an empty list if no memory exists
+            
             with open(self._ltm_path, 'r') as f:
                 data = json.load(f)
-
-            if key == "all":
-                return data
-            return data.get(key)
-
+            return data
+        
         except Exception as e:
             print(f"[{self._id}] ERROR reading from LTM: {e}")
             return None

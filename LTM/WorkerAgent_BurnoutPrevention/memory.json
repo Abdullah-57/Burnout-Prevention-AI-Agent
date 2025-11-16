@@ -222,5 +222,60 @@
       "is_trend": false,
       "analysis_complete": true
     }
+  },
+  {
+    "timestamp": "...",
+    "input_data": {
+      "employee_id": "user_xyz",
+      "stress": 8,
+      "work_hours": 9,
+      "sleep_hours": 5,
+      "mood": "frustrated"
+    },
+    "final_response": {
+      "risk_level": "high",
+      "empathetic_suggestion": "I'm sorry to hear you're feeling this way. Please remember to take regular breaks.",
+      "key_factors": [
+        "moderate_overtime",
+        "negative_mood",
+        "poor_sleep",
+        "high_stress"
+      ],
+      "actionable_steps": [
+        "Take a 5-minute walk.",
+        "Drink a glass of water."
+      ],
+      "conversation_starter": "Hi [Manager], I'm feeling a bit overwhelmed and would like to find 15 minutes to chat.",
+      "is_trend": false,
+      "analysis_complete": true
+    }
+  },
+  {
+    "timestamp": "...",
+    "input_data": {
+      "employee_id": "user_xyz",
+      "stress": 8,
+      "work_hours": 9,
+      "sleep_hours": 5,
+      "mood": "frustrated"
+    },
+    "final_response": {
+      "risk_level": "high",
+      "empathetic_suggestion": "It sounds like you're carrying a heavy load right now, and it's completely understandable that you're feeling a high risk of burnout given the poor sleep, high stress, and negative mood. Please know that your well-being is incredibly important, and we're here to support you through this challenging time. Let's focus on some immediate steps to help you feel better.",
+      "key_factors": [
+        "poor_sleep",
+        "negative_mood",
+        "high_stress",
+        "moderate_overtime"
+      ],
+      "actionable_steps": [
+        "Schedule a 15-minute 'no-screen' wind-down activity before bed tonight, like reading or gentle stretching, to aid sleep.",
+        "Take a 5-minute mindful breathing break every few hours today to help reduce stress and recenter your mood.",
+        "Identify one non-urgent task you can defer or delegate this week to slightly reduce your immediate workload."
+      ],
+      "conversation_starter": "I'd like to schedule some time to discuss my current workload and how we can best prioritize tasks to ensure I'm performing effectively while also managing my well-being. Would you be available for a brief chat sometime this week?",
+      "is_trend": false,
+      "analysis_complete": true
+    }
   }
 ]

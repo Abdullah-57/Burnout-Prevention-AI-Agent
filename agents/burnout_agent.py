@@ -31,14 +31,13 @@ class BurnoutPreventionAgent(AbstractWorkerAgent):
             history=current_history,
             burnout_risk="unknown",
             is_trend=False,
-            
-            # --- ADD THESE ---
+
             key_factors=[],
             empathetic_response="",
-            resource_links=[],
-            
-            # --- Keep these ---
-            recommendation="", # This is no longer used, but good to have
+            actionable_steps=[],       # <-- NEW
+            conversation_starter="", # <-- NEW
+
+            recommendation="",
             final_response={}
         )
 

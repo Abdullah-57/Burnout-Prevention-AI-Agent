@@ -4,7 +4,8 @@ import os
 from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.output_parsers import StrOutputParser
+from langchain_core.output_parsers import StrOutputParser, JsonOutputParser
+from pydantic import BaseModel, Field
 from typing import TypedDict, Literal, List, Any
 from langgraph.graph import StateGraph, END
 
@@ -18,52 +19,86 @@ class BurnoutState(TypedDict):
     # --- NEW FIELDS ---
     key_factors: List[str]     # e.g., ["high_stress", "poor_sleep"]
     empathetic_response: str # The AI-generated text
-    resource_links: List[dict] # e.g., [{"title": "...", "url": "..."}]
+    actionable_steps: List[str]  # <-- NEW (replaces resource_links)
+    conversation_starter: str  # <-- NEW
     recommendation: str
     final_response: dict
+
+# In agents/burnout_graph.py
+# (Put this right after your BurnoutState class)
+
+class AIResponse(BaseModel):
+    empathetic_response: str = Field(description="A 2-3 sentence empathetic and professional recommendation. Do not sound like a robot.")
+    actionable_steps: List[str] = Field(description="A list of 2 or 3 simple, concrete actions the user can take right now (e.g., 'Block 15-min walk on calendar', 'Drink a glass of water').")
+    conversation_starter: str = Field(description="A 1-2 sentence 'ice-breaker' the user can send to their manager to ask for help or discuss workload.")
+
+# In agents/burnout_graph.py
+# (Replace your old LLM, prompt, and chain)
 
 # --- Load API Key ---
 load_dotenv()
 
-# --- Define your LLM and Prompt ---
+# --- Define your LLM ---
 llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.7)
 
+# --- Create the Output Parser ---
+output_parser = JsonOutputParser(pydantic_object=AIResponse)
+
+# --- Create the new Prompt ---
 prompt_template = """
-You are an empathetic corporate wellness assistant. 
+You are an empathetic corporate wellness assistant.
 An employee is reporting a burnout risk of: **{risk}**.
 The key factors are: **{factors}**.
 
-Write a 2-3 sentence, empathetic, and professional recommendation. 
-Do not sound like a robot. Be encouraging.
+Based on this, generate a JSON object with the following fields:
+1. empathetic_response: A 2-3 sentence empathetic and professional recommendation.
+2. actionable_steps: A list of 2-3 simple, concrete actions the user can take.
+3. conversation_starter: A 1-2 sentence 'ice-breaker' to help them talk to their manager.
+
+{format_instructions}
 """
 
-prompt = ChatPromptTemplate.from_template(prompt_template)
-output_parser = StrOutputParser()
+prompt = ChatPromptTemplate.from_template(
+    prompt_template,
+    partial_variables={"format_instructions": output_parser.get_format_instructions()}
+)
 
 # This "chain" is your new AI "brain"
 llm_chain = prompt | llm | output_parser
 
 # --- NEW AI NODE ---
+# In agents/burnout_graph.py
+
 def generate_ai_response(state: BurnoutState) -> BurnoutState:
     print("--- Node: Generating AI Response ---")
+
+    # This handles the LTM trend logic first
     if state['is_trend']:
-        # If it's a trend, write a more urgent message
-        state['empathetic_response'] = "I'm noticing a consistent pattern of high stress. This is a clear sign of burnout. It's important we address this. Please reach out to your manager or HR to discuss your workload."
+        print("--- LTM Trend Detected: Using canned high-priority response. ---")
+        state['empathetic_response'] = "I'm noticing a consistent pattern of high stress. This is a clear sign of burnout. It's important we address this."
+        state['actionable_steps'] = ["Please book a meeting with your manager today.", "Notify HR of your current workload concerns."]
+        state['conversation_starter'] = "Hi [Manager], I need to discuss my workload as I've been feeling significantly burnt out for a while now. When is a good time for us to talk?"
         return state
-        
+
     try:
         risk = state['burnout_risk']
         factors = ", ".join(state['key_factors'])
-        
-        # Call the LLM
-        response_text = llm_chain.invoke({"risk": risk, "factors": factors})
-        state['empathetic_response'] = response_text
-        
+
+        # Call the LLM (which now returns a dictionary)
+        response_dict = llm_chain.invoke({"risk": risk, "factors": factors})
+
+        # Populate the state from the dictionary
+        state['empathetic_response'] = response_dict['empathetic_response']
+        state['actionable_steps'] = response_dict['actionable_steps']
+        state['conversation_starter'] = response_dict['conversation_starter']
+
     except Exception as e:
         print(f"--- ERROR: LLM call failed: {e} ---")
-        # Fallback to a simple rule in case the AI fails
+        # Fallback in case the AI (or JSON parsing) fails
         state['empathetic_response'] = "I'm sorry to hear you're feeling this way. Please remember to take regular breaks."
-        
+        state['actionable_steps'] = ["Take a 5-minute walk.", "Drink a glass of water."]
+        state['conversation_starter'] = "Hi [Manager], I'm feeling a bit overwhelmed and would like to find 15 minutes to chat."
+
     return state
 
 # 2. Define your "Nodes" (functions)
@@ -157,28 +192,16 @@ def analyze_risk_and_factors(state: BurnoutState) -> BurnoutState:
     
     return state
 
-def generate_resources(state: BurnoutState) -> BurnoutState:
-    print("--- Node: Generating Resources ---")
-    factors = state['key_factors']
-    links = []
-    
-    if "poor_sleep" in factors:
-        links.append({"title": "Tips for Better Sleep", "url": "/resources/sleep"})
-    if "high_stress" in factors or "negative_mood" in factors:
-        links.append({"title": "Guided Meditation App", "url": "/resources/meditation"})
-    if "long_work_hours" in factors:
-        links.append({"title": "Company Work-Life Policy", "url": "/resources/wlb-policy"})
-    
-    state['resource_links'] = links
-    return state
+# In agents/burnout_graph.py
 
 def format_response(state: BurnoutState) -> BurnoutState:
     print("--- Node: Formatting Response ---")
     state['final_response'] = {
         "risk_level": state['burnout_risk'],
-        "empathetic_suggestion": state['empathetic_response'], # <-- New
-        "key_factors": state['key_factors'],                   # <-- New
-        "resource_links": state['resource_links'],             # <-- New
+        "empathetic_suggestion": state['empathetic_response'],
+        "key_factors": state['key_factors'],
+        "actionable_steps": state['actionable_steps'],        # <-- NEW
+        "conversation_starter": state['conversation_starter'], # <-- NEW
         "is_trend": state['is_trend'],
         "analysis_complete": True
     }
@@ -187,17 +210,15 @@ def format_response(state: BurnoutState) -> BurnoutState:
 # 3. Wire them up in a graph
 workflow = StateGraph(BurnoutState)
 
-# Add the new nodes
-workflow.add_node("analyze_risk_and_factors", analyze_risk_and_factors) # Renamed
-workflow.add_node("generate_ai_response", generate_ai_response) # New
-workflow.add_node("generate_resources", generate_resources)     # New
+# Add the nodes
+workflow.add_node("analyze_risk_and_factors", analyze_risk_and_factors)
+workflow.add_node("generate_ai_response", generate_ai_response)
 workflow.add_node("format_response", format_response)
 
-# This is the new flow:
+# This is the new, simpler flow:
 workflow.set_entry_point("analyze_risk_and_factors")
 workflow.add_edge("analyze_risk_and_factors", "generate_ai_response")
-workflow.add_edge("generate_ai_response", "generate_resources")
-workflow.add_edge("generate_resources", "format_response")
+workflow.add_edge("generate_ai_response", "format_response")
 workflow.add_edge("format_response", END)
 
 # Compile the graph

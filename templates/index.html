@@ -1,129 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Burnout Prevention Agent</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <title>Burnout Prevention AI | Demo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
+
     <div class="container">
-        <h1>🧠 Burnout Prevention Agent</h1>
-        <p class="subtitle">Analyze your burnout risk and get personalized recommendations</p>
 
-        <div class="card">
-            <h2>Input Your Data</h2>
-            <form id="burnoutForm">
-                <div class="form-group">
-                    <label for="stress">Stress Level (0-10):</label>
-                    <input type="number" id="stress" name="stress" min="0" max="10" value="5" required>
-                    <span class="hint">0 = No stress, 10 = Extreme stress</span>
+        <div class="hero-banner">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span>●</span> Live AI System
                 </div>
-
-                <div class="form-group">
-                    <label for="work_hours">Work Hours Today:</label>
-                    <input type="number" id="work_hours" name="work_hours" min="0" max="24" value="8" required>
-                    <span class="hint">Total hours worked today</span>
-                </div>
-
-                <button type="submit" id="analyzeBtn">Analyze Burnout Risk</button>
-            </form>
-        </div>
-
-        <div id="processing" class="processing hidden">
-            <div class="spinner"></div>
-            <p>Processing your data through LangGraph...</p>
-        </div>
-
-        <div id="results" class="card results hidden">
-            <h2>Analysis Results</h2>
-            <div class="result-content">
-                <div class="risk-badge" id="riskBadge">
-                    <span id="riskLevel"></span>
-                </div>
-                <div class="recommendation">
-                    <h3>Recommendation:</h3>
-                    <p id="suggestion"></p>
-                </div>
+                <h1>Burnout Prevention Agent</h1>
+                <p>
+                    This intelligent worker agent autonomously monitors employee well-being metrics.
+                    It uses a hybrid architecture (Rule-Based Logic + Generative AI) to identify burnout risks
+                    in real-time, track historical trends, and generate empathetic, actionable intervention plans.
+                </p>
             </div>
         </div>
 
-        <div class="endpoints">
-            <h3>Available Endpoints:</h3>
-            <ul>
-                <li><code>GET /</code> - Home page (this demo interface)</li>
-                <li><code>GET /status</code> or <code>GET /api/v1/status</code> - Agent status check</li>
-                <li><code>POST /task</code> or <code>POST /api/v1/task</code> - Supervisor task endpoint</li>
-                <li><code>POST /demo</code> - Demo endpoint (used by this page)</li>
-            </ul>
+        <div class="dashboard-grid">
+
+            <div class="card input-section">
+                <div class="section-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                    </svg>
+                    Input Parameters
+                </div>
+
+                <form id="wellnessForm">
+                    <div class="form-group">
+                        <label for="employee_id">Employee ID</label>
+                        <input type="text" id="employee_id" value="user_demo_01" placeholder="e.g., emp_123" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Stress Level (1-10) <span id="val-stress" class="range-value">5</span></label>
+                        <input type="range" id="stress" min="1" max="10" value="5"
+                            oninput="updateVal('val-stress', this.value)">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Work Hours (Today) <span id="val-hours" class="range-value">8</span></label>
+                        <input type="range" id="work_hours" min="1" max="16" value="8"
+                            oninput="updateVal('val-hours', this.value)">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Sleep Hours <span id="val-sleep" class="range-value">7</span></label>
+                        <input type="range" id="sleep_hours" min="0" max="12" value="7"
+                            oninput="updateVal('val-sleep', this.value)">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mood">Reported Mood</label>
+                        <select id="mood">
+                            <option value="happy">Happy / Motivated</option>
+                            <option value="ok" selected>Okay / Neutral</option>
+                            <option value="tired">Tired / Drained</option>
+                            <option value="anxious">Anxious / Worried</option>
+                            <option value="frustrated">Frustrated / Angry</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-submit" id="analyzeBtn">
+                        Run Analysis
+                    </button>
+                </form>
+            </div>
+
+            <div class="card results-section">
+                <div id="loader" class="loader"></div>
+
+                <div id="placeholder" style="text-align: center; color: #94a3b8; padding: 5rem 0;">
+                    <svg style="width: 48px; height: 48px; margin-bottom: 1rem; opacity: 0.5;" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+                        <line x1="9" y1="9" x2="9.01" y2="9" />
+                        <line x1="15" y1="9" x2="15.01" y2="9" />
+                    </svg>
+                    <p>Awaiting input data from Supervisor...</p>
+                </div>
+
+                <div id="results-area">
+
+                    <div id="trend-alert" class="trend-alert" style="display: none;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                        </svg>
+                        <div>
+                            <strong>Historical Trend Detected</strong><br>
+                            <span style="font-weight: 400;">This employee has shown consistent signs of stress over
+                                multiple reports.</span>
+                        </div>
+                    </div>
+
+                    <div class="result-header-card">
+                        <div>
+                            <h2 style="font-size: 1.5rem;">Analysis Report</h2>
+                            <span style="color: #64748b; font-size: 0.9rem;">Generated by Agent Logic & Generative
+                                AI</span>
+                        </div>
+                        <span id="risk-badge" class="risk-badge">--</span>
+                    </div>
+
+                    <div class="ai-insight-box">
+                        <p id="ai-message" class="insight-text">...</p>
+                    </div>
+
+                    <div>
+                        <h3>Identified Risk Factors</h3>
+                        <ul id="factors-list" class="factors-list">
+                        </ul>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr; gap: 2rem; margin-top: 1rem;">
+
+                        <div>
+                            <h3>Recommended Actions</h3>
+                            <ul id="steps-list" class="steps-list">
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h3>Conversation Starter</h3>
+                            <div class="copy-box" id="conversation-starter" title="Click to copy">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
-        const form = document.getElementById('burnoutForm');
-        const processing = document.getElementById('processing');
-        const results = document.getElementById('results');
-        const analyzeBtn = document.getElementById('analyzeBtn');
+        function updateVal(id, val) {
+            document.getElementById(id).textContent = val;
+        }
 
-        form.addEventListener('submit', async (e) => {
+        document.getElementById('wellnessForm').addEventListener('submit', async function (e) {
             e.preventDefault();
 
-            // Get form data
-            const stress = parseInt(document.getElementById('stress').value);
-            const work_hours = parseInt(document.getElementById('work_hours').value);
+            // UI State
+            const btn = document.getElementById('analyzeBtn');
+            const loader = document.getElementById('loader');
+            const resultsArea = document.getElementById('results-area');
+            const placeholder = document.getElementById('placeholder');
 
-            // Show processing, hide results
-            processing.classList.remove('hidden');
-            results.classList.add('hidden');
-            analyzeBtn.disabled = true;
+            btn.disabled = true;
+            btn.innerHTML = "Agent Working...";
+            loader.style.display = 'block';
+            resultsArea.style.display = 'none';
+            placeholder.style.display = 'none';
+
+            // Gather Data
+            const data = {
+                employee_id: document.getElementById('employee_id').value,
+                stress: parseInt(document.getElementById('stress').value),
+                work_hours: parseInt(document.getElementById('work_hours').value),
+                sleep_hours: parseInt(document.getElementById('sleep_hours').value),
+                mood: document.getElementById('mood').value
+            };
 
             try {
-                // Call the /demo endpoint
+                // Call Backend
                 const response = await fetch('/demo', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ stress, work_hours })
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
                 });
 
-                const data = await response.json();
+                const result = await response.json();
 
-                // Hide processing
-                processing.classList.add('hidden');
-                analyzeBtn.disabled = false;
+                // 1. Risk Badge
+                const badge = document.getElementById('risk-badge');
+                badge.innerText = result.risk_level + " RISK";
+                badge.className = 'risk-badge risk-' + result.risk_level;
 
-                if (response.ok) {
-                    // Display results
-                    displayResults(data);
+                // 2. Trend Alert
+                const trend = document.getElementById('trend-alert');
+                trend.style.display = result.is_trend ? 'flex' : 'none';
+
+                // 3. AI Message
+                document.getElementById('ai-message').innerText = result.empathetic_suggestion;
+
+                // 4. Factors
+                const factorsList = document.getElementById('factors-list');
+                factorsList.innerHTML = '';
+                if (result.key_factors && result.key_factors.length > 0) {
+                    result.key_factors.forEach(factor => {
+                        const li = document.createElement('li');
+                        li.className = 'factor-tag';
+                        li.innerText = factor.replace(/_/g, ' ');
+                        factorsList.appendChild(li);
+                    });
                 } else {
-                    alert('Error: ' + (data.error || 'Unknown error'));
+                    factorsList.innerHTML = '<li class="factor-tag" style="background:#f1f5f9; color:#64748b;">None detected</li>';
                 }
+
+                // 5. Steps
+                const stepsList = document.getElementById('steps-list');
+                stepsList.innerHTML = '';
+                if (result.actionable_steps) {
+                    result.actionable_steps.forEach(step => {
+                        const li = document.createElement('li');
+                        li.innerText = step;
+                        stepsList.appendChild(li);
+                    });
+                }
+
+                // 6. Conversation Starter
+                document.getElementById('conversation-starter').innerText = result.conversation_starter || "No script generated.";
+
+                // Show Results
+                loader.style.display = 'none';
+                resultsArea.style.display = 'flex';
+
             } catch (error) {
-                processing.classList.add('hidden');
-                analyzeBtn.disabled = false;
-                alert('Network error: ' + error.message);
+                alert("Error connecting to agent: " + error);
+                loader.style.display = 'none';
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = "Run Analysis";
             }
         });
-
-        function displayResults(data) {
-            const riskLevel = data.risk_level || 'unknown';
-            const suggestion = data.suggestion || 'No recommendation available';
-
-            // Update risk badge
-            const riskBadge = document.getElementById('riskBadge');
-            const riskLevelSpan = document.getElementById('riskLevel');
-            riskLevelSpan.textContent = riskLevel.toUpperCase() + ' RISK';
-            
-            // Set badge color based on risk
-            riskBadge.className = 'risk-badge risk-' + riskLevel;
-
-            // Update suggestion
-            document.getElementById('suggestion').textContent = suggestion;
-
-            // Show results
-            results.classList.remove('hidden');
-        }
     </script>
+
 </body>
+
 </html>

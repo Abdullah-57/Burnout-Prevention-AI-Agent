@@ -1,51 +1,66 @@
+import logging
 from flask import Flask, jsonify, request, render_template
 from agents.burnout_agent import BurnoutPreventionAgent
 import uuid
+import json
+from datetime import datetime
+
+# --- 1. Setup Logging (Rubric: Logging & Health Check) ---
+# This configures the system to save logs to 'agent.log'
+logging.basicConfig(
+    filename='agent.log',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
 
 app = Flask(__name__)
 
-# --- Create a single instance of our agent ---
-# These IDs will be given by the Supervisor, but we can mock them
+# --- 2. Initialize Agent ---
 SUPERVISOR_ID = "SupervisorAgent_Main"
 AGENT_ID = "WorkerAgent_BurnoutPrevention"
 agent = BurnoutPreventionAgent(agent_id=AGENT_ID, supervisor_id=SUPERVISOR_ID)
-
 
 @app.route("/")
 def home():
     """Serves the main demo page."""
     return render_template("index.html")
 
-# --- Health Check Endpoints ---
+# --- Health Check Endpoint ---
 @app.route("/status", methods=['GET'])
 @app.route("/api/v1/status", methods=['GET'])
 def get_status():
-    return jsonify({ "status": "online", "agent_name": AGENT_ID}), 200
+    """Returns the health status of the agent."""
+    status_info = {
+        "status": "online",
+        "agent_name": AGENT_ID,
+        "timestamp": datetime.now().isoformat()
+    }
+    # Log the health check
+    logging.info(f"Health check requested. Status: {status_info['status']}")
+    return jsonify(status_info), 200
 
-# --- THIS IS THE MAIN API ENDPOINT FOR THE SUPERVISOR ---
+# --- Main Task Endpoint ---
 @app.route("/task", methods=['POST'])
 @app.route("/api/v1/task", methods=['POST'])
 def handle_task():
     """
-    Receives a 'task_assignment' from the Supervisor,
-    processes it, and returns a 'completion_report'.
+    Receives a task, processes it via the Agent, and returns results.
+    Logs all interactions to agent.log.
     """
     try:
         task_message = request.json
-
-        # 1. Use the agent's built-in message handler
-        # This calls _execute_task, which calls your process_task (LangGraph)
-        # (We need to slightly modify the agent's handler or bypass it)
-        # Let's call the logic directly for simplicity:
+        
+        # Log the incoming request
+        logging.info(f"Received Task: {json.dumps(task_message)}")
 
         task_params = task_message.get("task", {}).get("parameters", {})
         related_msg_id = task_message.get("message_id")
 
-        # 2. Run the task (This calls your LangGraph)
+        # Run the agent logic
         results = agent.process_task(task_params)
         status = "SUCCESS"
 
-        # 3. Format the "completion_report" (from Project_SPM_MAS_Details.docx)
+        # Create report
         report = {
             "message_id": str(uuid.uuid4()),
             "sender": AGENT_ID,
@@ -53,40 +68,36 @@ def handle_task():
             "type": "completion_report",
             "related_message_id": related_msg_id,
             "status": status,
-            "results": results, # This comes from your LangGraph!
-            "timestamp": "..." # Add a real timestamp
+            "results": results,
+            "timestamp": datetime.now().isoformat()
         }
 
+        # Log the successful completion
+        logging.info(f"Task Completed. Result Risk: {results.get('risk_level')}")
+        
         return jsonify(report), 200
 
     except Exception as e:
-        # Handle errors
+        error_msg = str(e)
+        logging.error(f"Task Failed: {error_msg}")
         import traceback
-        error_trace = traceback.format_exc()
-        print(f"ERROR in handle_task: {error_trace}")
-        return jsonify({"status": "FAILURE", "error": str(e)}), 500
+        logging.error(traceback.format_exc())
+        return jsonify({"status": "FAILURE", "error": error_msg}), 500
 
-# --- Endpoint for the HTML page to CALL ---
+# --- Demo Endpoint ---
 @app.route("/demo", methods=['POST'])
 def run_demo():
-    """
-    This is called by the JavaScript in index.html.
-    It simulates a Supervisor call.
-    """
+    """Endpoint specifically for the HTML frontend."""
     try:
-        # 1. Get data from the HTML form
         data = request.json
-        print(f"Demo received: {data}") # e.g., {"stress": 8, "work_hours": 10}
-
-        # 2. Run the task using your agent
-        # This calls the SAME LangGraph logic
+        logging.info(f"Demo Request: {data.get('employee_id')}")
         results = agent.process_task(data)
-
-        # 3. Send back just the results
         return jsonify(results), 200
-
     except Exception as e:
+        logging.error(f"Demo Error: {e}")
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
+    print("--- Burnout Prevention Agent Started on Port 5001 ---")
+    print("--- Logs are being saved to 'agent.log' ---")
     app.run(debug=True, port=5001)

@@ -1,0 +1,38 @@
+**1. Health Check (System Status)**
+
+```powershell
+Invoke-RestMethod -Uri http://127.0.0.1:5001/api/v1/status -Method GET
+```
+
+**2. Happy Path Test (Low Risk)**
+
+```powershell
+Invoke-RestMethod -Uri http://127.0.0.1:5001/api/v1/task -Method POST -ContentType 'application/json' -Body '{"message_id":"test_happy","task":{"parameters":{"employee_id":"user_happy","stress":2,"work_hours":8,"sleep_hours":8,"mood":"happy"}}}' | ConvertTo-Json -Depth 5
+```
+
+**3. High Risk Test (Immediate Intervention)**
+
+```powershell
+Invoke-RestMethod -Uri http://127.0.0.1:5001/api/v1/task -Method POST -ContentType 'application/json' -Body '{"message_id":"test_danger","task":{"parameters":{"employee_id":"user_danger","stress":9,"work_hours":12,"sleep_hours":4,"mood":"frustrated"}}}' | ConvertTo-Json -Depth 5
+```
+
+**4. Trend Detection Sequence (Run these 3 in order)**
+*This simulates 3 days of "Medium" stress. The 3rd request triggers the trend alert.*
+
+**Step 1 (Day 1):**
+
+```powershell
+Invoke-RestMethod -Uri http://127.0.0.1:5001/api/v1/task -Method POST -ContentType 'application/json' -Body '{"message_id":"t1","task":{"parameters":{"employee_id":"trend_user_X","stress":5,"work_hours":9,"sleep_hours":6,"mood":"ok"}}}' | ConvertTo-Json -Depth 5
+```
+
+**Step 2 (Day 2):**
+
+```powershell
+Invoke-RestMethod -Uri http://127.0.0.1:5001/api/v1/task -Method POST -ContentType 'application/json' -Body '{"message_id":"t2","task":{"parameters":{"employee_id":"trend_user_X","stress":5,"work_hours":9,"sleep_hours":6,"mood":"ok"}}}' | ConvertTo-Json -Depth 5
+```
+
+**Step 3 (Day 3 - The Trigger):**
+
+```powershell
+Invoke-RestMethod -Uri http://127.0.0.1:5001/api/v1/task -Method POST -ContentType 'application/json' -Body '{"message_id":"t3","task":{"parameters":{"employee_id":"trend_user_X","stress":5,"work_hours":9,"sleep_hours":6,"mood":"ok"}}}' | ConvertTo-Json -Depth 5
+```

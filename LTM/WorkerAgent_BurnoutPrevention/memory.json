@@ -1293,5 +1293,573 @@
       "is_trend": true,
       "analysis_complete": true
     }
+  },
+  {
+    "timestamp": "...",
+    "input_data": {
+      "employee_id": "user_demo_06",
+      "stress": 5,
+      "work_hours": 9,
+      "sleep_hours": 7,
+      "mood": "ok"
+    },
+    "final_response": {
+      "risk_level": "medium",
+      "empathetic_suggestion": "It sounds like you're navigating a challenging period with moderate overtime and medium stress, and it's really commendable that you're recognizing these early signs of burnout risk. Taking proactive steps now can make a big difference in maintaining your well-being and productivity. We're here to support you in finding a healthier balance.",
+      "key_factors": [
+        "moderate_overtime",
+        "medium_stress"
+      ],
+      "actionable_steps": [
+        "Block 30 minutes in your calendar today for a dedicated, uninterrupted lunch break.",
+        "Identify your top 3 priorities for tomorrow and focus on completing those first.",
+        "Take 5 minutes to practice mindful breathing or gentle stretching at your desk."
+      ],
+      "conversation_starter": "Hi [Manager's Name], I'd like to schedule some time to discuss my current workload and ensure I'm prioritizing effectively. I'm keen to ensure I'm contributing my best while maintaining a healthy work-life balance.",
+      "is_trend": false,
+      "analysis_complete": true
+    }
+  },
+  {
+    "timestamp": "...",
+    "input_data": {
+      "employee_id": "user_demo_06",
+      "stress": 5,
+      "work_hours": 9,
+      "sleep_hours": 7,
+      "mood": "ok"
+    },
+    "final_response": {
+      "risk_level": "medium",
+      "empathetic_suggestion": "It sounds like you're navigating a challenging period with moderate overtime and stress, and it's really commendable that you're recognizing this risk. Taking proactive steps now can make a significant difference in maintaining your well-being and productivity.",
+      "key_factors": [
+        "moderate_overtime",
+        "medium_stress"
+      ],
+      "actionable_steps": [
+        "Block 15-minute breaks on your calendar to step away from your desk.",
+        "Identify your top 3 priorities for each day and focus on those first.",
+        "Schedule a firm end time for your workday to help manage overtime."
+      ],
+      "conversation_starter": "Hi [Manager's Name], I'd appreciate a quick chat about my current workload and priorities to ensure I'm focusing my efforts most effectively. Do you have 15 minutes to connect sometime this week?",
+      "is_trend": false,
+      "analysis_complete": true
+    }
+  },
+  {
+    "timestamp": "...",
+    "input_data": {
+      "employee_id": "user_demo_06",
+      "stress": 5,
+      "work_hours": 9,
+      "sleep_hours": 7,
+      "mood": "ok"
+    },
+    "final_response": {
+      "risk_level": "high",
+      "empathetic_suggestion": "I'm noticing a consistent pattern of high stress. This is a clear sign of burnout. It's important we address this.",
+      "key_factors": [
+        "consistent_stress_trend",
+        "moderate_overtime",
+        "medium_stress"
+      ],
+      "actionable_steps": [
+        "Please book a meeting with your manager today.",
+        "Notify HR of your current workload concerns."
+      ],
+      "conversation_starter": "Hi [Manager], I need to discuss my workload as I've been feeling significantly burnt out for a while now. When is a good time for us to talk?",
+      "is_trend": true,
+      "analysis_complete": true
+    }
+  },
+  {
+    "timestamp": "...",
+    "input_data": {
+      "employee_id": "test_user_1",
+      "stress": 3,
+      "work_hours": 8,
+      "sleep_hours": 8,
+      "mood": "happy"
+    },
+    "final_response": {
+      "risk_level": "low",
+      "empathetic_suggestion": "It's wonderful to hear your burnout risk is low, and that your healthy habits are playing such a positive role in your well-being! This is a fantastic foundation to build upon, and we're here to help you maintain this positive momentum. Keep nurturing those practices that serve you so well.",
+      "key_factors": [
+        "healthy_habits"
+      ],
+      "actionable_steps": [
+        "Continue prioritizing a consistent sleep schedule.",
+        "Schedule a 'mindful moment' each day to step away from your screen and breathe.",
+        "Identify one small new activity you enjoy and incorporate it into your week."
+      ],
+      "conversation_starter": "Hi [Manager's Name], I'm feeling well-balanced and would love to proactively connect with you to discuss my current projects and any upcoming priorities. Are you free for a quick chat sometime this week?",
+      "is_trend": false,
+      "analysis_complete": true
+    }
+  },
+  {
+    "timestamp": "...",
+    "input_data": {
+      "employee_id": "test_user_2",
+      "stress": 4,
+      "work_hours": 8,
+      "sleep_hours": 4,
+      "mood": "tired"
+    },
+    "final_response": {
+      "risk_level": "medium",
+      "empathetic_suggestion": "It sounds like you're navigating a challenging period, and it's completely understandable to feel the effects of a medium burnout risk, especially when poor sleep is a key factor. Taking proactive steps now to prioritize your rest can make a significant difference in your well-being and productivity. Remember, your health is paramount.",
+      "key_factors": [
+        "poor_sleep"
+      ],
+      "actionable_steps": [
+        "Set a 'wind-down' reminder on your phone for 30 minutes before your target bedtime.",
+        "Commit to a consistent bedtime and wake-up time for the next three days, even on weekends.",
+        "Avoid screen time (phone, tablet, computer) for at least one hour before going to sleep."
+      ],
+      "conversation_starter": "I'd like to schedule a brief chat to discuss my current workload and ensure I'm operating at my best capacity. I've been feeling a bit drained recently and want to make sure I'm setting myself up for continued success.",
+      "is_trend": false,
+      "analysis_complete": true
+    }
+  },
+  {
+    "timestamp": "...",
+    "input_data": {
+      "employee_id": "test_user_3",
+      "stress": 5,
+      "work_hours": 11,
+      "sleep_hours": 6,
+      "mood": "ok"
+    },
+    "final_response": {
+      "risk_level": "high",
+      "empathetic_suggestion": "It sounds like you're carrying a heavy load right now, and it's completely understandable that you're feeling a high risk of burnout, especially with long hours and persistent stress. Please know that your well-being is a priority, and we're here to help you find ways to alleviate this pressure and restore balance.",
+      "key_factors": [
+        "long_work_hours",
+        "medium_stress"
+      ],
+      "actionable_steps": [
+        "Block 30 minutes in your calendar today for a non-work break (e.g., walk, stretching, quiet time).",
+        "Identify one non-urgent task you can delegate or postpone until tomorrow.",
+        "Set an alarm 30 minutes before your ideal log-off time to start winding down."
+      ],
+      "conversation_starter": "Hi [Manager's Name], I'd like to schedule some time to discuss my current workload and capacity. I'm finding it challenging to manage the long hours while maintaining optimal performance.",
+      "is_trend": false,
+      "analysis_complete": true
+    }
+  },
+  {
+    "timestamp": "...",
+    "input_data": {
+      "employee_id": "user_trend_bot",
+      "stress": 5,
+      "work_hours": 9,
+      "sleep_hours": 6,
+      "mood": "ok"
+    },
+    "final_response": {
+      "risk_level": "high",
+      "empathetic_suggestion": "I'm noticing a consistent pattern of high stress. This is a clear sign of burnout. It's important we address this.",
+      "key_factors": [
+        "consistent_stress_trend",
+        "moderate_overtime",
+        "medium_stress"
+      ],
+      "actionable_steps": [
+        "Please book a meeting with your manager today.",
+        "Notify HR of your current workload concerns."
+      ],
+      "conversation_starter": "Hi [Manager], I need to discuss my workload as I've been feeling significantly burnt out for a while now. When is a good time for us to talk?",
+      "is_trend": true,
+      "analysis_complete": true
+    }
+  },
+  {
+    "timestamp": "...",
+    "input_data": {
+      "employee_id": "user_trend_bot",
+      "stress": 5,
+      "work_hours": 9,
+      "sleep_hours": 6,
+      "mood": "ok"
+    },
+    "final_response": {
+      "risk_level": "high",
+      "empathetic_suggestion": "I'm noticing a consistent pattern of high stress. This is a clear sign of burnout. It's important we address this.",
+      "key_factors": [
+        "consistent_stress_trend",
+        "moderate_overtime",
+        "medium_stress"
+      ],
+      "actionable_steps": [
+        "Please book a meeting with your manager today.",
+        "Notify HR of your current workload concerns."
+      ],
+      "conversation_starter": "Hi [Manager], I need to discuss my workload as I've been feeling significantly burnt out for a while now. When is a good time for us to talk?",
+      "is_trend": true,
+      "analysis_complete": true
+    }
+  },
+  {
+    "timestamp": "...",
+    "input_data": {
+      "employee_id": "user_trend_bot",
+      "stress": 5,
+      "work_hours": 9,
+      "sleep_hours": 6,
+      "mood": "ok"
+    },
+    "final_response": {
+      "risk_level": "high",
+      "empathetic_suggestion": "I'm noticing a consistent pattern of high stress. This is a clear sign of burnout. It's important we address this.",
+      "key_factors": [
+        "consistent_stress_trend",
+        "moderate_overtime",
+        "medium_stress"
+      ],
+      "actionable_steps": [
+        "Please book a meeting with your manager today.",
+        "Notify HR of your current workload concerns."
+      ],
+      "conversation_starter": "Hi [Manager], I need to discuss my workload as I've been feeling significantly burnt out for a while now. When is a good time for us to talk?",
+      "is_trend": true,
+      "analysis_complete": true
+    }
+  },
+  {
+    "timestamp": "...",
+    "input_data": {
+      "employee_id": "test_user_1",
+      "stress": 3,
+      "work_hours": 8,
+      "sleep_hours": 8,
+      "mood": "happy"
+    },
+    "final_response": {
+      "risk_level": "low",
+      "empathetic_suggestion": "It's wonderful to hear your burnout risk is low, especially with healthy habits playing a key role! This is a fantastic foundation for sustained well-being. Keep nurturing these positive routines to proactively manage your energy and focus.",
+      "key_factors": [
+        "healthy_habits"
+      ],
+      "actionable_steps": [
+        "Block 15 minutes for a mindful break today.",
+        "Reflect on your current healthy habits and identify one you want to strengthen.",
+        "Ensure you're staying well-hydrated throughout your workday."
+      ],
+      "conversation_starter": "Hi [Manager's Name], I'd love to proactively discuss my current workload and ensure I'm maintaining a sustainable pace. Do you have a few minutes to connect sometime this week?",
+      "is_trend": false,
+      "analysis_complete": true
+    }
+  },
+  {
+    "timestamp": "...",
+    "input_data": {
+      "employee_id": "test_user_2",
+      "stress": 4,
+      "work_hours": 8,
+      "sleep_hours": 4,
+      "mood": "tired"
+    },
+    "final_response": {
+      "risk_level": "high",
+      "empathetic_suggestion": "I'm noticing a consistent pattern of high stress. This is a clear sign of burnout. It's important we address this.",
+      "key_factors": [
+        "poor_sleep",
+        "consistent_stress_trend"
+      ],
+      "actionable_steps": [
+        "Please book a meeting with your manager today.",
+        "Notify HR of your current workload concerns."
+      ],
+      "conversation_starter": "Hi [Manager], I need to discuss my workload as I've been feeling significantly burnt out for a while now. When is a good time for us to talk?",
+      "is_trend": true,
+      "analysis_complete": true
+    }
+  },
+  {
+    "timestamp": "...",
+    "input_data": {
+      "employee_id": "test_user_3",
+      "stress": 5,
+      "work_hours": 11,
+      "sleep_hours": 6,
+      "mood": "ok"
+    },
+    "final_response": {
+      "risk_level": "high",
+      "empathetic_suggestion": "It sounds like you're carrying a heavy load, and it's completely understandable to feel a high risk of burnout with long work hours and medium stress levels. Prioritizing your well-being is crucial, and we're here to help you find ways to alleviate this pressure and restore balance.",
+      "key_factors": [
+        "long_work_hours",
+        "medium_stress"
+      ],
+      "actionable_steps": [
+        "Block 30 minutes on your calendar today for a non-work activity, like a short walk or quiet time.",
+        "Review your task list for tomorrow and identify one non-urgent item that can be postponed or delegated.",
+        "Set a firm 'end of day' reminder to help you step away from work at a consistent time."
+      ],
+      "conversation_starter": "I'd like to schedule some time to discuss my current workload and capacity. I'm looking for ways to ensure I'm performing at my best long-term, and I believe a quick chat could be beneficial.",
+      "is_trend": false,
+      "analysis_complete": true
+    }
+  },
+  {
+    "timestamp": "...",
+    "input_data": {
+      "employee_id": "user_trend_bot",
+      "stress": 5,
+      "work_hours": 9,
+      "sleep_hours": 6,
+      "mood": "ok"
+    },
+    "final_response": {
+      "risk_level": "high",
+      "empathetic_suggestion": "I'm noticing a consistent pattern of high stress. This is a clear sign of burnout. It's important we address this.",
+      "key_factors": [
+        "consistent_stress_trend",
+        "moderate_overtime",
+        "medium_stress"
+      ],
+      "actionable_steps": [
+        "Please book a meeting with your manager today.",
+        "Notify HR of your current workload concerns."
+      ],
+      "conversation_starter": "Hi [Manager], I need to discuss my workload as I've been feeling significantly burnt out for a while now. When is a good time for us to talk?",
+      "is_trend": true,
+      "analysis_complete": true
+    }
+  },
+  {
+    "timestamp": "...",
+    "input_data": {
+      "employee_id": "user_trend_bot",
+      "stress": 5,
+      "work_hours": 9,
+      "sleep_hours": 6,
+      "mood": "ok"
+    },
+    "final_response": {
+      "risk_level": "high",
+      "empathetic_suggestion": "I'm noticing a consistent pattern of high stress. This is a clear sign of burnout. It's important we address this.",
+      "key_factors": [
+        "consistent_stress_trend",
+        "moderate_overtime",
+        "medium_stress"
+      ],
+      "actionable_steps": [
+        "Please book a meeting with your manager today.",
+        "Notify HR of your current workload concerns."
+      ],
+      "conversation_starter": "Hi [Manager], I need to discuss my workload as I've been feeling significantly burnt out for a while now. When is a good time for us to talk?",
+      "is_trend": true,
+      "analysis_complete": true
+    }
+  },
+  {
+    "timestamp": "...",
+    "input_data": {
+      "employee_id": "user_trend_bot",
+      "stress": 5,
+      "work_hours": 9,
+      "sleep_hours": 6,
+      "mood": "ok"
+    },
+    "final_response": {
+      "risk_level": "high",
+      "empathetic_suggestion": "I'm noticing a consistent pattern of high stress. This is a clear sign of burnout. It's important we address this.",
+      "key_factors": [
+        "consistent_stress_trend",
+        "moderate_overtime",
+        "medium_stress"
+      ],
+      "actionable_steps": [
+        "Please book a meeting with your manager today.",
+        "Notify HR of your current workload concerns."
+      ],
+      "conversation_starter": "Hi [Manager], I need to discuss my workload as I've been feeling significantly burnt out for a while now. When is a good time for us to talk?",
+      "is_trend": true,
+      "analysis_complete": true
+    }
+  },
+  {
+    "timestamp": "...",
+    "input_data": {
+      "employee_id": "test_user_1_1763917389",
+      "stress": 3,
+      "work_hours": 8,
+      "sleep_hours": 8,
+      "mood": "happy"
+    },
+    "final_response": {
+      "risk_level": "low",
+      "empathetic_suggestion": "It's wonderful to hear that you're currently experiencing a low burnout risk, especially with healthy habits being a key factor! This proactive approach to your well-being is truly commendable and sets a great foundation. Keep nurturing these positive routines to maintain your balance and energy.",
+      "key_factors": [
+        "healthy_habits"
+      ],
+      "actionable_steps": [
+        "Schedule a 15-minute 'mindful break' on your calendar each afternoon.",
+        "Ensure you're staying hydrated by keeping a water bottle at your desk.",
+        "Reflect on one small positive moment or accomplishment from your day before logging off."
+      ],
+      "conversation_starter": "Hi [Manager's Name], I'm feeling well-balanced and focused right now. I wanted to proactively check in about my current workload and any upcoming priorities to ensure I can continue maintaining this healthy rhythm.",
+      "is_trend": false,
+      "analysis_complete": true
+    }
+  },
+  {
+    "timestamp": "...",
+    "input_data": {
+      "employee_id": "test_user_2_1763917389",
+      "stress": 4,
+      "work_hours": 8,
+      "sleep_hours": 4,
+      "mood": "tired"
+    },
+    "final_response": {
+      "risk_level": "medium",
+      "empathetic_suggestion": "It sounds like you're navigating a challenging period, and poor sleep can significantly contribute to feeling burnt out. Please know that acknowledging this is a crucial first step, and we're here to help you find supportive strategies to improve your rest and overall well-being.",
+      "key_factors": [
+        "poor_sleep"
+      ],
+      "actionable_steps": [
+        "Create a 'wind-down' routine 30-60 minutes before bed, avoiding screens.",
+        "Aim for a consistent bedtime and wake-up time, even on weekends, to regulate your sleep cycle.",
+        "Ensure your bedroom is dark, quiet, and cool to optimize your sleep environment."
+      ],
+      "conversation_starter": "Hi [Manager's Name], I'd like to schedule a quick chat to discuss my current workload and explore how I can best manage my energy levels and responsibilities more effectively. I'm looking for ways to ensure I'm performing at my best.",
+      "is_trend": false,
+      "analysis_complete": true
+    }
+  },
+  {
+    "timestamp": "...",
+    "input_data": {
+      "employee_id": "test_user_3_1763917389",
+      "stress": 5,
+      "work_hours": 11,
+      "sleep_hours": 6,
+      "mood": "ok"
+    },
+    "final_response": {
+      "risk_level": "high",
+      "empathetic_suggestion": "It sounds like you're carrying a heavy load right now, and it's completely understandable to feel a high risk of burnout given the long work hours and persistent stress. Please know that your well-being is a priority, and we want to help you find ways to manage your workload more effectively and reduce this pressure.",
+      "key_factors": [
+        "long_work_hours",
+        "medium_stress"
+      ],
+      "actionable_steps": [
+        "Block 15 minutes on your calendar today for a screen-free break, even if it's just to stretch or grab water.",
+        "Identify one non-critical task you can postpone or delegate to free up some immediate mental space.",
+        "Set a firm 'stop work' time for yourself this evening and commit to logging off at that time."
+      ],
+      "conversation_starter": "I'd like to schedule some time to discuss my current project load and ensure I'm prioritizing effectively to meet deadlines sustainably. Would you be available for a brief chat sometime this week?",
+      "is_trend": false,
+      "analysis_complete": true
+    }
+  },
+  {
+    "timestamp": "...",
+    "input_data": {
+      "employee_id": "user_trend_bot_1763917389",
+      "stress": 5,
+      "work_hours": 9,
+      "sleep_hours": 6,
+      "mood": "ok"
+    },
+    "final_response": {
+      "risk_level": "medium",
+      "empathetic_suggestion": "It sounds like you're experiencing a period of medium stress and moderate overtime, and it's incredibly insightful of you to recognize this as a potential burnout risk. Addressing this proactively is a sign of strength, and we're here to help you find more balance and sustainability in your work. Taking small steps now can make a significant positive impact on your well-being.",
+      "key_factors": [
+        "medium_stress",
+        "moderate_overtime"
+      ],
+      "actionable_steps": [
+        "Block 15 minutes on your calendar today for a mindful break, away from your screen.",
+        "Identify your top 3 most critical tasks for tomorrow and focus only on completing those first.",
+        "Set a firm 'end of day' time for yourself this week and stick to it on at least two occasions."
+      ],
+      "conversation_starter": "Hi [Manager's Name], I'd like to schedule a brief chat about my current workload and priorities to ensure I'm maximizing my impact and managing my time effectively. Do you have 15 minutes sometime this week?",
+      "is_trend": false,
+      "analysis_complete": true
+    }
+  },
+  {
+    "timestamp": "...",
+    "input_data": {
+      "employee_id": "user_trend_bot_1763917389",
+      "stress": 5,
+      "work_hours": 9,
+      "sleep_hours": 6,
+      "mood": "ok"
+    },
+    "final_response": {
+      "risk_level": "medium",
+      "empathetic_suggestion": "It sounds like you're feeling the pressure with medium stress and moderate overtime, and it's really commendable that you're recognizing this risk early. Taking proactive steps now can make a significant difference in maintaining your well-being and productivity. We're here to support you in finding a better balance.",
+      "key_factors": [
+        "medium_stress",
+        "moderate_overtime"
+      ],
+      "actionable_steps": [
+        "Block out 15 minutes for a screen-free break in your calendar today.",
+        "Identify one non-urgent task you can delegate or postpone to ease your immediate workload.",
+        "Ensure you take a full lunch break away from your desk."
+      ],
+      "conversation_starter": "Hi [Manager's Name], I'd like to schedule some time to discuss my current workload and ensure I'm prioritizing effectively to maintain my energy and focus. Would you be available for a brief chat sometime this week?",
+      "is_trend": false,
+      "analysis_complete": true
+    }
+  },
+  {
+    "timestamp": "...",
+    "input_data": {
+      "employee_id": "user_trend_bot_1763917389",
+      "stress": 5,
+      "work_hours": 9,
+      "sleep_hours": 6,
+      "mood": "ok"
+    },
+    "final_response": {
+      "risk_level": "high",
+      "empathetic_suggestion": "I'm noticing a consistent pattern of high stress. This is a clear sign of burnout. It's important we address this.",
+      "key_factors": [
+        "medium_stress",
+        "consistent_stress_trend",
+        "moderate_overtime"
+      ],
+      "actionable_steps": [
+        "Please book a meeting with your manager today.",
+        "Notify HR of your current workload concerns."
+      ],
+      "conversation_starter": "Hi [Manager], I need to discuss my workload as I've been feeling significantly burnt out for a while now. When is a good time for us to talk?",
+      "is_trend": true,
+      "analysis_complete": true
+    }
+  },
+  {
+    "timestamp": "...",
+    "input_data": {
+      "employee_id": "user_danger",
+      "stress": 9,
+      "work_hours": 12,
+      "sleep_hours": 4,
+      "mood": "frustrated"
+    },
+    "final_response": {
+      "risk_level": "high",
+      "empathetic_suggestion": "It sounds like you're carrying a heavy load right now, and it's completely understandable to feel overwhelmed with long hours, poor sleep, and high stress impacting your mood. Please know that your well-being is a priority, and there are steps we can take together to help you navigate this challenging period and find some relief.",
+      "key_factors": [
+        "long_work_hours",
+        "poor_sleep",
+        "negative_mood",
+        "high_stress"
+      ],
+      "actionable_steps": [
+        "Block 15 minutes in your calendar today for a mindful break away from your screen.",
+        "Aim to get to bed 30 minutes earlier tonight to start improving your sleep quality.",
+        "Identify one non-urgent task you can postpone or delegate to lighten your immediate load."
+      ],
+      "conversation_starter": "Hi [Manager's Name], I'd like to schedule some time to discuss my current workload and capacity. I'm feeling a bit stretched and would appreciate your guidance on prioritizing tasks.",
+      "is_trend": false,
+      "analysis_complete": true
+    }
   }
 ]

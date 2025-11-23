@@ -90,3 +90,59 @@ werkzeug.exceptions.BadRequest: 400 Bad Request: Failed to decode JSON object: E
 2025-11-23 21:56:25,703 - INFO - Received Task: {"message_id": "t2", "task": {"parameters": {"employee_id": "trend_user_X", "stress": 5, "work_hours": 9, "sleep_hours": 6, "mood": "ok"}}}
 2025-11-23 21:56:30,312 - INFO - Task Completed. Result Risk: medium
 2025-11-23 21:56:30,312 - INFO - 127.0.0.1 - - [23/Nov/2025 21:56:30] "POST /api/v1/task HTTP/1.1" 200 -
+2025-11-23 21:56:44,324 - INFO - Received Task: {"message_id": "t3", "task": {"parameters": {"employee_id": "trend_user_X", "stress": 5, "work_hours": 9, "sleep_hours": 6, "mood": "ok"}}}
+2025-11-23 21:56:44,332 - INFO - Task Completed. Result Risk: high
+2025-11-23 21:56:44,332 - INFO - 127.0.0.1 - - [23/Nov/2025 21:56:44] "POST /api/v1/task HTTP/1.1" 200 -
+2025-11-23 21:57:40,234 - INFO - 127.0.0.1 - - [23/Nov/2025 21:57:40] "GET / HTTP/1.1" 200 -
+2025-11-23 21:57:40,253 - INFO - 127.0.0.1 - - [23/Nov/2025 21:57:40] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-11-23 21:59:35,895 - INFO - 127.0.0.1 - - [23/Nov/2025 21:59:35] "GET / HTTP/1.1" 200 -
+2025-11-23 21:59:36,291 - INFO - 127.0.0.1 - - [23/Nov/2025 21:59:36] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-11-23 21:59:45,827 - INFO - Demo Request: user_demo_06
+2025-11-23 21:59:50,861 - INFO - 127.0.0.1 - - [23/Nov/2025 21:59:50] "POST /demo HTTP/1.1" 200 -
+2025-11-23 21:59:52,540 - INFO - Demo Request: user_demo_06
+2025-11-23 21:59:56,110 - INFO - 127.0.0.1 - - [23/Nov/2025 21:59:56] "POST /demo HTTP/1.1" 200 -
+2025-11-23 21:59:59,097 - INFO - Demo Request: user_demo_06
+2025-11-23 21:59:59,116 - INFO - 127.0.0.1 - - [23/Nov/2025 21:59:59] "POST /demo HTTP/1.1" 200 -
+2025-11-23 22:00:15,838 - INFO - Received Task: {"message_id": "test_1763917215", "sender": "Test_Runner", "recipient": "WorkerAgent", "type": "task_assignment", "task": {"name": "analyze_wellbeing", "parameters": {"employee_id": "test_user_1", "stress": 3, "work_hours": 8, "sleep_hours": 8, "mood": "happy"}}}
+2025-11-23 22:00:19,418 - INFO - Task Completed. Result Risk: low
+2025-11-23 22:00:19,419 - INFO - 127.0.0.1 - - [23/Nov/2025 22:00:19] "POST /api/v1/task HTTP/1.1" 200 -
+2025-11-23 22:00:19,423 - INFO - Received Task: {"message_id": "test_1763917219", "sender": "Test_Runner", "recipient": "WorkerAgent", "type": "task_assignment", "task": {"name": "analyze_wellbeing", "parameters": {"employee_id": "test_user_2", "stress": 4, "work_hours": 8, "sleep_hours": 4, "mood": "tired"}}}
+2025-11-23 22:00:23,271 - INFO - Task Completed. Result Risk: medium
+2025-11-23 22:00:23,271 - INFO - 127.0.0.1 - - [23/Nov/2025 22:00:23] "POST /api/v1/task HTTP/1.1" 200 -
+2025-11-23 22:00:23,276 - INFO - Received Task: {"message_id": "test_1763917223", "sender": "Test_Runner", "recipient": "WorkerAgent", "type": "task_assignment", "task": {"name": "analyze_wellbeing", "parameters": {"employee_id": "test_user_3", "stress": 5, "work_hours": 11, "sleep_hours": 6, "mood": "ok"}}}
+2025-11-23 22:00:27,440 - INFO - Task Completed. Result Risk: high
+2025-11-23 22:00:27,440 - INFO - 127.0.0.1 - - [23/Nov/2025 22:00:27] "POST /api/v1/task HTTP/1.1" 200 -
+2025-11-23 22:00:27,445 - INFO - Received Task: {"message_id": "test_1763917227", "sender": "Test_Runner", "recipient": "WorkerAgent", "type": "task_assignment", "task": {"name": "analyze_wellbeing", "parameters": {"employee_id": "user_trend_bot", "stress": 5, "work_hours": 9, "sleep_hours": 6, "mood": "ok"}}}
+2025-11-23 22:00:27,472 - INFO - Task Completed. Result Risk: high
+2025-11-23 22:00:27,472 - INFO - 127.0.0.1 - - [23/Nov/2025 22:00:27] "POST /api/v1/task HTTP/1.1" 200 -
+2025-11-23 22:00:27,478 - INFO - Received Task: {"message_id": "test_1763917227", "sender": "Test_Runner", "recipient": "WorkerAgent", "type": "task_assignment", "task": {"name": "analyze_wellbeing", "parameters": {"employee_id": "user_trend_bot", "stress": 5, "work_hours": 9, "sleep_hours": 6, "mood": "ok"}}}
+2025-11-23 22:00:27,504 - INFO - Task Completed. Result Risk: high
+2025-11-23 22:00:27,504 - INFO - 127.0.0.1 - - [23/Nov/2025 22:00:27] "POST /api/v1/task HTTP/1.1" 200 -
+2025-11-23 22:00:27,509 - INFO - Received Task: {"message_id": "test_1763917227", "sender": "Test_Runner", "recipient": "WorkerAgent", "type": "task_assignment", "task": {"name": "analyze_wellbeing", "parameters": {"employee_id": "user_trend_bot", "stress": 5, "work_hours": 9, "sleep_hours": 6, "mood": "ok"}}}
+2025-11-23 22:00:27,534 - INFO - Task Completed. Result Risk: high
+2025-11-23 22:00:27,535 - INFO - 127.0.0.1 - - [23/Nov/2025 22:00:27] "POST /api/v1/task HTTP/1.1" 200 -
+2025-11-23 22:00:53,642 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-11-23 22:00:53,642 - INFO - [33mPress CTRL+C to quit[0m
+2025-11-23 22:00:53,645 - INFO -  * Restarting with stat
+2025-11-23 22:00:55,434 - WARNING -  * Debugger is active!
+2025-11-23 22:00:55,441 - INFO -  * Debugger PIN: 720-859-578
+2025-11-23 22:00:59,598 - INFO - Received Task: {"message_id": "test_1763917259", "sender": "Test_Runner", "recipient": "WorkerAgent", "type": "task_assignment", "task": {"name": "analyze_wellbeing", "parameters": {"employee_id": "test_user_1", "stress": 3, "work_hours": 8, "sleep_hours": 8, "mood": "happy"}}}
+2025-11-23 22:01:03,220 - INFO - Task Completed. Result Risk: low
+2025-11-23 22:01:03,220 - INFO - 127.0.0.1 - - [23/Nov/2025 22:01:03] "POST /api/v1/task HTTP/1.1" 200 -
+2025-11-23 22:01:03,225 - INFO - Received Task: {"message_id": "test_1763917263", "sender": "Test_Runner", "recipient": "WorkerAgent", "type": "task_assignment", "task": {"name": "analyze_wellbeing", "parameters": {"employee_id": "test_user_2", "stress": 4, "work_hours": 8, "sleep_hours": 4, "mood": "tired"}}}
+2025-11-23 22:01:03,261 - INFO - Task Completed. Result Risk: high
+2025-11-23 22:01:03,261 - INFO - 127.0.0.1 - - [23/Nov/2025 22:01:03] "POST /api/v1/task HTTP/1.1" 200 -
+2025-11-23 22:01:03,266 - INFO - Received Task: {"message_id": "test_1763917263", "sender": "Test_Runner", "recipient": "WorkerAgent", "type": "task_assignment", "task": {"name": "analyze_wellbeing", "parameters": {"employee_id": "test_user_3", "stress": 5, "work_hours": 11, "sleep_hours": 6, "mood": "ok"}}}
+2025-11-23 22:01:06,366 - INFO - Task Completed. Result Risk: high
+2025-11-23 22:01:06,366 - INFO - 127.0.0.1 - - [23/Nov/2025 22:01:06] "POST /api/v1/task HTTP/1.1" 200 -
+2025-11-23 22:01:06,378 - INFO - Received Task: {"message_id": "test_1763917266", "sender": "Test_Runner", "recipient": "WorkerAgent", "type": "task_assignment", "task": {"name": "analyze_wellbeing", "parameters": {"employee_id": "user_trend_bot", "stress": 5, "work_hours": 9, "sleep_hours": 6, "mood": "ok"}}}
+2025-11-23 22:01:06,465 - INFO - Task Completed. Result Risk: high
+2025-11-23 22:01:06,465 - INFO - 127.0.0.1 - - [23/Nov/2025 22:01:06] "POST /api/v1/task HTTP/1.1" 200 -
+2025-11-23 22:01:06,475 - INFO - Received Task: {"message_id": "test_1763917266", "sender": "Test_Runner", "recipient": "WorkerAgent", "type": "task_assignment", "task": {"name": "analyze_wellbeing", "parameters": {"employee_id": "user_trend_bot", "stress": 5, "work_hours": 9, "sleep_hours": 6, "mood": "ok"}}}
+2025-11-23 22:01:06,550 - INFO - Task Completed. Result Risk: high
+2025-11-23 22:01:06,551 - INFO - 127.0.0.1 - - [23/Nov/2025 22:01:06] "POST /api/v1/task HTTP/1.1" 200 -
+2025-11-23 22:01:06,565 - INFO - Received Task: {"message_id": "test_1763917266", "sender": "Test_Runner", "recipient": "WorkerAgent", "type": "task_assignment", "task": {"name": "analyze_wellbeing", "parameters": {"employee_id": "user_trend_bot", "stress": 5, "work_hours": 9, "sleep_hours": 6, "mood": "ok"}}}
+2025-11-23 22:01:06,637 - INFO - Task Completed. Result Risk: high
+2025-11-23 22:01:06,637 - INFO - 127.0.0.1 - - [23/Nov/2025 22:01:06] "POST /api/v1/task HTTP/1.1" 200 -
+2025-11-23 22:03:04,924 - INFO -  * Detected change in 'C:\\Users\\Admin\\OneDrive\\Desktop\\burnout-prevention\\test_agent.py', reloading

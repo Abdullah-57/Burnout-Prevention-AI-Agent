@@ -1,17 +1,26 @@
 import requests
 import json
 import time
+import random
 
 # Configuration
 BASE_URL = "http://127.0.0.1:5001"
 TASK_ENDPOINT = f"{BASE_URL}/api/v1/task"
 HEADERS = {"Content-Type": "application/json"}
 
+# Generate a unique run ID so tests don't conflict with previous history
+RUN_ID = int(time.time())
+
 def run_test(test_name, input_data, expected_risk, check_trend=False):
     print(f"\n--- Running Test: {test_name} ---")
     
+    # Update employee_id to be unique for this run
+    # e.g., "test_user_1" becomes "test_user_1_1731805200"
+    original_id = input_data["employee_id"]
+    input_data["employee_id"] = f"{original_id}_{RUN_ID}"
+    
     payload = {
-        "message_id": f"test_{int(time.time())}",
+        "message_id": f"test_{int(time.time())}_{random.randint(1,1000)}",
         "sender": "Test_Runner",
         "recipient": "WorkerAgent",
         "type": "task_assignment",
@@ -50,7 +59,7 @@ def run_test(test_name, input_data, expected_risk, check_trend=False):
         print(f"❌ System Error: {e}")
 
 def main():
-    print("Starting Integration Tests for Burnout Prevention Agent...")
+    print(f"Starting Integration Tests (Run ID: {RUN_ID})...")
     
     # 1. Happy Path
     run_test(
@@ -74,12 +83,19 @@ def main():
     )
 
     # 4. Trend Detection (Sequential)
-    print("\n--- Running Sequential Trend Test (user_trend_bot) ---")
+    # Note: We use the SAME base ID for these 3 steps so they build history within this specific run
+    print(f"\n--- Running Sequential Trend Test (user_trend_bot_{RUN_ID}) ---")
+    
     # Message 1 (Medium)
     run_test("Trend Step 1", {"employee_id": "user_trend_bot", "stress": 5, "work_hours": 9, "sleep_hours": 6, "mood": "ok"}, "medium")
+    
     # Message 2 (Medium)
+    # Add a tiny sleep to ensure file writes complete (just to be safe)
+    time.sleep(0.5)
     run_test("Trend Step 2", {"employee_id": "user_trend_bot", "stress": 5, "work_hours": 9, "sleep_hours": 6, "mood": "ok"}, "medium")
+    
     # Message 3 (Expect High + Trend)
+    time.sleep(0.5)
     run_test("Trend Step 3 (Trigger)", {"employee_id": "user_trend_bot", "stress": 5, "work_hours": 9, "sleep_hours": 6, "mood": "ok"}, "high", check_trend=True)
 
 if __name__ == "__main__":

@@ -233,3 +233,25 @@ werkzeug.exceptions.BadRequest: 400 Bad Request: Failed to decode JSON object: E
 2025-11-24 20:19:16,035 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
 2025-11-24 20:19:16,208 - WARNING -  * Debugger is active!
 2025-11-24 20:19:16,219 - INFO -  * Debugger PIN: 720-859-578
+2025-11-24 20:19:27,505 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-11-24 20:19:27,814 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-11-24 20:19:27,814 - INFO - [33mPress CTRL+C to quit[0m
+2025-11-24 20:19:27,818 - INFO -  * Restarting with stat
+2025-11-24 20:19:32,168 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-11-24 20:19:32,402 - WARNING -  * Debugger is active!
+2025-11-24 20:19:32,420 - INFO -  * Debugger PIN: 720-859-578
+2025-11-24 20:19:32,859 - INFO - 127.0.0.1 - - [24/Nov/2025 20:19:32] "GET / HTTP/1.1" 200 -
+2025-11-24 20:19:32,961 - INFO - 127.0.0.1 - - [24/Nov/2025 20:19:32] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-11-24 20:19:39,850 - INFO - Demo Request: user_demo_12
+2025-11-24 20:19:44,010 - INFO - 127.0.0.1 - - [24/Nov/2025 20:19:44] "POST /demo HTTP/1.1" 200 -
+2025-11-24 20:20:08,176 - INFO - Demo Request: user_demo_12
+2025-11-24 20:20:11,715 - INFO - 127.0.0.1 - - [24/Nov/2025 20:20:11] "POST /demo HTTP/1.1" 200 -
+2025-11-24 20:20:14,438 - INFO - Demo Request: user_demo_12
+2025-11-24 20:20:14,756 - INFO - 127.0.0.1 - - [24/Nov/2025 20:20:14] "POST /demo HTTP/1.1" 200 -
+2025-11-24 20:20:40,180 - INFO - Received Task: {"message_id": "test_reasoning_low", "task": {"parameters": {"employee_id": "user_low", "stress": 2, "work_hours": 8, "sleep_hours": 8, "mood": "happy"}}}
+2025-11-24 20:20:40,457 - INFO - Task Completed. Result Risk: low
+2025-11-24 20:20:40,457 - INFO - 127.0.0.1 - - [24/Nov/2025 20:20:40] "POST /api/v1/task HTTP/1.1" 200 -
+2025-11-24 20:21:02,475 - INFO - Received Task: {"message_id": "test_reasoning_high", "task": {"parameters": {"employee_id": "user_high", "stress": 9, "work_hours": 12, "sleep_hours": 4, "mood": "frustrated"}}}
+2025-11-24 20:21:07,394 - INFO - Task Completed. Result Risk: high
+2025-11-24 20:21:07,395 - INFO - 127.0.0.1 - - [24/Nov/2025 20:21:07] "POST /api/v1/task HTTP/1.1" 200 -

@@ -32,7 +32,7 @@ class AIResponse(BaseModel):
 
 # --- LLM Setup ---
 # Using the model we verified works for you
-llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", temperature=0.7)
+llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.7)
 
 # --- Create the Output Parser ---
 output_parser = JsonOutputParser(pydantic_object=AIResponse)

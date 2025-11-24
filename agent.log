@@ -209,3 +209,27 @@ werkzeug.exceptions.BadRequest: 400 Bad Request: Failed to decode JSON object: E
 2025-11-24 20:04:58,100 - INFO - 127.0.0.1 - - [24/Nov/2025 20:04:58] "POST /demo HTTP/1.1" 200 -
 2025-11-24 20:05:05,629 - INFO - Demo Request: user_demo_10
 2025-11-24 20:05:05,929 - INFO - 127.0.0.1 - - [24/Nov/2025 20:05:05] "POST /demo HTTP/1.1" 200 -
+2025-11-24 20:17:17,731 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-11-24 20:17:17,924 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-11-24 20:17:17,924 - INFO - [33mPress CTRL+C to quit[0m
+2025-11-24 20:17:17,926 - INFO -  * Restarting with stat
+2025-11-24 20:17:22,635 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-11-24 20:17:22,924 - WARNING -  * Debugger is active!
+2025-11-24 20:17:22,938 - INFO -  * Debugger PIN: 720-859-578
+2025-11-24 20:17:23,105 - INFO - 127.0.0.1 - - [24/Nov/2025 20:17:23] "GET / HTTP/1.1" 200 -
+2025-11-24 20:17:23,334 - INFO - 127.0.0.1 - - [24/Nov/2025 20:17:23] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-11-24 20:17:30,788 - INFO - Demo Request: user_demo_01
+2025-11-24 20:17:31,326 - INFO - 127.0.0.1 - - [24/Nov/2025 20:17:31] "POST /demo HTTP/1.1" 200 -
+2025-11-24 20:17:44,089 - INFO - Demo Request: user_demo_11
+2025-11-24 20:17:45,178 - WARNING - Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 2.0 seconds as it raised NotFound: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods..
+2025-11-24 20:17:47,422 - WARNING - Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 4.0 seconds as it raised NotFound: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods..
+2025-11-24 20:17:51,657 - WARNING - Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 8.0 seconds as it raised NotFound: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods..
+2025-11-24 20:17:59,864 - WARNING - Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 16.0 seconds as it raised NotFound: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods..
+2025-11-24 20:18:16,071 - WARNING - Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 32.0 seconds as it raised NotFound: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods..
+2025-11-24 20:18:48,614 - INFO - 127.0.0.1 - - [24/Nov/2025 20:18:48] "POST /demo HTTP/1.1" 200 -
+2025-11-24 20:19:11,987 - INFO -  * Detected change in 'C:\\Users\\Admin\\OneDrive\\Desktop\\burnout-prevention\\agents\\burnout_graph.py', reloading
+2025-11-24 20:19:12,662 - INFO -  * Restarting with stat
+2025-11-24 20:19:16,035 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-11-24 20:19:16,208 - WARNING -  * Debugger is active!
+2025-11-24 20:19:16,219 - INFO -  * Debugger PIN: 720-859-578

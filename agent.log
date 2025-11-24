@@ -146,3 +146,27 @@ werkzeug.exceptions.BadRequest: 400 Bad Request: Failed to decode JSON object: E
 2025-11-23 22:01:06,637 - INFO - Task Completed. Result Risk: high
 2025-11-23 22:01:06,637 - INFO - 127.0.0.1 - - [23/Nov/2025 22:01:06] "POST /api/v1/task HTTP/1.1" 200 -
 2025-11-23 22:03:04,924 - INFO -  * Detected change in 'C:\\Users\\Admin\\OneDrive\\Desktop\\burnout-prevention\\test_agent.py', reloading
+2025-11-23 22:03:07,175 - INFO -  * Restarting with stat
+2025-11-23 22:03:09,174 - WARNING -  * Debugger is active!
+2025-11-23 22:03:09,181 - INFO -  * Debugger PIN: 720-859-578
+2025-11-23 22:03:09,362 - INFO - Received Task: {"message_id": "test_1763917389_247", "sender": "Test_Runner", "recipient": "WorkerAgent", "type": "task_assignment", "task": {"name": "analyze_wellbeing", "parameters": {"employee_id": "test_user_1_1763917389", "stress": 3, "work_hours": 8, "sleep_hours": 8, "mood": "happy"}}}
+2025-11-23 22:03:13,223 - INFO - Task Completed. Result Risk: low
+2025-11-23 22:03:13,224 - INFO - 127.0.0.1 - - [23/Nov/2025 22:03:13] "POST /api/v1/task HTTP/1.1" 200 -
+2025-11-23 22:03:13,230 - INFO - Received Task: {"message_id": "test_1763917393_882", "sender": "Test_Runner", "recipient": "WorkerAgent", "type": "task_assignment", "task": {"name": "analyze_wellbeing", "parameters": {"employee_id": "test_user_2_1763917389", "stress": 4, "work_hours": 8, "sleep_hours": 4, "mood": "tired"}}}
+2025-11-23 22:03:18,316 - INFO - Task Completed. Result Risk: medium
+2025-11-23 22:03:18,316 - INFO - 127.0.0.1 - - [23/Nov/2025 22:03:18] "POST /api/v1/task HTTP/1.1" 200 -
+2025-11-23 22:03:18,321 - INFO - Received Task: {"message_id": "test_1763917398_765", "sender": "Test_Runner", "recipient": "WorkerAgent", "type": "task_assignment", "task": {"name": "analyze_wellbeing", "parameters": {"employee_id": "test_user_3_1763917389", "stress": 5, "work_hours": 11, "sleep_hours": 6, "mood": "ok"}}}
+2025-11-23 22:03:21,870 - INFO - Task Completed. Result Risk: high
+2025-11-23 22:03:21,870 - INFO - 127.0.0.1 - - [23/Nov/2025 22:03:21] "POST /api/v1/task HTTP/1.1" 200 -
+2025-11-23 22:03:21,875 - INFO - Received Task: {"message_id": "test_1763917401_763", "sender": "Test_Runner", "recipient": "WorkerAgent", "type": "task_assignment", "task": {"name": "analyze_wellbeing", "parameters": {"employee_id": "user_trend_bot_1763917389", "stress": 5, "work_hours": 9, "sleep_hours": 6, "mood": "ok"}}}
+2025-11-23 22:03:25,694 - INFO - Task Completed. Result Risk: medium
+2025-11-23 22:03:25,694 - INFO - 127.0.0.1 - - [23/Nov/2025 22:03:25] "POST /api/v1/task HTTP/1.1" 200 -
+2025-11-23 22:03:26,203 - INFO - Received Task: {"message_id": "test_1763917406_301", "sender": "Test_Runner", "recipient": "WorkerAgent", "type": "task_assignment", "task": {"name": "analyze_wellbeing", "parameters": {"employee_id": "user_trend_bot_1763917389", "stress": 5, "work_hours": 9, "sleep_hours": 6, "mood": "ok"}}}
+2025-11-23 22:03:29,626 - INFO - Task Completed. Result Risk: medium
+2025-11-23 22:03:29,627 - INFO - 127.0.0.1 - - [23/Nov/2025 22:03:29] "POST /api/v1/task HTTP/1.1" 200 -
+2025-11-23 22:03:30,135 - INFO - Received Task: {"message_id": "test_1763917410_931", "sender": "Test_Runner", "recipient": "WorkerAgent", "type": "task_assignment", "task": {"name": "analyze_wellbeing", "parameters": {"employee_id": "user_trend_bot_1763917389", "stress": 5, "work_hours": 9, "sleep_hours": 6, "mood": "ok"}}}
+2025-11-23 22:03:30,150 - INFO - Task Completed. Result Risk: high
+2025-11-23 22:03:30,151 - INFO - 127.0.0.1 - - [23/Nov/2025 22:03:30] "POST /api/v1/task HTTP/1.1" 200 -
+2025-11-23 22:03:48,945 - INFO - Received Task: {"message_id": "test_danger", "task": {"parameters": {"employee_id": "user_danger", "stress": 9, "work_hours": 12, "sleep_hours": 4, "mood": "frustrated"}}}
+2025-11-23 22:03:52,371 - INFO - Task Completed. Result Risk: high
+2025-11-23 22:03:52,371 - INFO - 127.0.0.1 - - [23/Nov/2025 22:03:52] "POST /api/v1/task HTTP/1.1" 200 -

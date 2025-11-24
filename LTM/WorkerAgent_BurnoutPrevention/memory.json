@@ -1861,5 +1861,129 @@
       "is_trend": false,
       "analysis_complete": true
     }
+  },
+  {
+    "timestamp": "2025-11-24T19:56:08.355190",
+    "input_data": {
+      "employee_id": "user_low",
+      "stress": 2,
+      "work_hours": 8,
+      "sleep_hours": 8,
+      "mood": "happy"
+    },
+    "final_response": {
+      "risk_level": "low",
+      "empathetic_suggestion": "Great job maintaining a healthy balance! Your metrics look good. Keep up the positive habits.",
+      "key_factors": [
+        "healthy_habits"
+      ],
+      "actionable_steps": [
+        "Continue your current sleep schedule.",
+        "Share your productivity tips with a colleague."
+      ],
+      "conversation_starter": "Hi [Manager], I'm feeling productive this week and would love to discuss upcoming opportunities.",
+      "is_trend": false,
+      "analysis_complete": true
+    }
+  },
+  {
+    "timestamp": "2025-11-24T19:58:52.946636",
+    "input_data": {
+      "employee_id": "user_high",
+      "stress": 9,
+      "work_hours": 12,
+      "sleep_hours": 4,
+      "mood": "frustrated"
+    },
+    "final_response": {
+      "risk_level": "high",
+      "empathetic_suggestion": "I'm sorry to hear you're feeling this way. Please remember to take regular breaks.",
+      "key_factors": [
+        "negative_mood",
+        "high_stress",
+        "poor_sleep",
+        "long_work_hours"
+      ],
+      "actionable_steps": [
+        "Take a 5-minute walk.",
+        "Drink a glass of water."
+      ],
+      "conversation_starter": "Hi [Manager], I'm feeling a bit overwhelmed and would like to find 15 minutes to chat.",
+      "is_trend": false,
+      "analysis_complete": true
+    }
+  },
+  {
+    "timestamp": "2025-11-24T20:03:48.794646",
+    "input_data": {
+      "employee_id": "user_demo_10",
+      "stress": 5,
+      "work_hours": 8,
+      "sleep_hours": 7,
+      "mood": "ok"
+    },
+    "final_response": {
+      "risk_level": "medium",
+      "empathetic_suggestion": "I'm sorry to hear you're feeling this way. Please remember to take regular breaks.",
+      "key_factors": [
+        "medium_stress"
+      ],
+      "actionable_steps": [
+        "Take a 5-minute walk.",
+        "Drink a glass of water."
+      ],
+      "conversation_starter": "Hi [Manager], I'm feeling a bit overwhelmed and would like to find 15 minutes to chat.",
+      "is_trend": false,
+      "analysis_complete": true
+    }
+  },
+  {
+    "timestamp": "2025-11-24T20:04:57.779263",
+    "input_data": {
+      "employee_id": "user_demo_10",
+      "stress": 5,
+      "work_hours": 8,
+      "sleep_hours": 7,
+      "mood": "ok"
+    },
+    "final_response": {
+      "risk_level": "medium",
+      "empathetic_suggestion": "I'm sorry to hear you're feeling this way. Please remember to take regular breaks.",
+      "key_factors": [
+        "medium_stress"
+      ],
+      "actionable_steps": [
+        "Take a 5-minute walk.",
+        "Drink a glass of water."
+      ],
+      "conversation_starter": "Hi [Manager], I'm feeling a bit overwhelmed and would like to find 15 minutes to chat.",
+      "is_trend": false,
+      "analysis_complete": true
+    }
+  },
+  {
+    "timestamp": "2025-11-24T20:05:05.662039",
+    "input_data": {
+      "employee_id": "user_demo_10",
+      "stress": 5,
+      "work_hours": 8,
+      "sleep_hours": 7,
+      "mood": "ok"
+    },
+    "final_response": {
+      "risk_level": "high",
+      "empathetic_suggestion": "I'm noticing a consistent pattern of high stress. This is a clear sign of burnout. It's important we address this.",
+      "key_factors": [
+        "consistent_stress_trend",
+        "medium_stress"
+      ],
+      "actionable_steps": [
+        "Please book a meeting with your manager today.",
+        "Notify HR of your current workload concerns."
+      ],
+      "conversation_starter": "Hi [Manager], I need to discuss my workload as I've been feeling significantly burnt out for a while now. When is a good time for us to talk?",
+      "is_trend": true,
+      "analysis_complete": true
+    }
   }
 ]

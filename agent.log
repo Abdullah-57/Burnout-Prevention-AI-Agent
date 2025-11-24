@@ -170,3 +170,42 @@ werkzeug.exceptions.BadRequest: 400 Bad Request: Failed to decode JSON object: E
 2025-11-23 22:03:48,945 - INFO - Received Task: {"message_id": "test_danger", "task": {"parameters": {"employee_id": "user_danger", "stress": 9, "work_hours": 12, "sleep_hours": 4, "mood": "frustrated"}}}
 2025-11-23 22:03:52,371 - INFO - Task Completed. Result Risk: high
 2025-11-23 22:03:52,371 - INFO - 127.0.0.1 - - [23/Nov/2025 22:03:52] "POST /api/v1/task HTTP/1.1" 200 -
+2025-11-24 19:55:45,061 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-11-24 19:55:45,356 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-11-24 19:55:45,356 - INFO - [33mPress CTRL+C to quit[0m
+2025-11-24 19:55:45,358 - INFO -  * Restarting with stat
+2025-11-24 19:55:49,336 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-11-24 19:55:49,543 - WARNING -  * Debugger is active!
+2025-11-24 19:55:49,563 - INFO -  * Debugger PIN: 720-859-578
+2025-11-24 19:56:08,350 - INFO - Received Task: {"message_id": "test_reasoning_low", "task": {"parameters": {"employee_id": "user_low", "stress": 2, "work_hours": 8, "sleep_hours": 8, "mood": "happy"}}}
+2025-11-24 19:56:09,926 - INFO - HTTP Request: GET https://chroma-onnx-models.s3.amazonaws.com/all-MiniLM-L6-v2/onnx.tar.gz "HTTP/1.1 200 OK"
+2025-11-24 19:57:02,747 - INFO - Task Completed. Result Risk: low
+2025-11-24 19:57:02,748 - INFO - 127.0.0.1 - - [24/Nov/2025 19:57:02] "POST /api/v1/task HTTP/1.1" 200 -
+2025-11-24 19:57:49,275 - INFO - Received Task: {"message_id": "test_reasoning_high", "task": {"parameters": {"employee_id": "user_high", "stress": 9, "work_hours": 12, "sleep_hours": 4, "mood": "frustrated"}}}
+2025-11-24 19:57:49,849 - WARNING - Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 2.0 seconds as it raised NotFound: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods..
+2025-11-24 19:57:52,071 - WARNING - Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 4.0 seconds as it raised NotFound: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods..
+2025-11-24 19:57:56,283 - WARNING - Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 8.0 seconds as it raised NotFound: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods..
+2025-11-24 19:58:04,488 - WARNING - Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 16.0 seconds as it raised NotFound: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods..
+2025-11-24 19:58:20,695 - WARNING - Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 32.0 seconds as it raised NotFound: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods..
+2025-11-24 19:58:53,217 - INFO - Task Completed. Result Risk: high
+2025-11-24 19:58:53,218 - INFO - 127.0.0.1 - - [24/Nov/2025 19:58:53] "POST /api/v1/task HTTP/1.1" 200 -
+2025-11-24 20:02:35,194 - INFO - 127.0.0.1 - - [24/Nov/2025 20:02:35] "GET / HTTP/1.1" 200 -
+2025-11-24 20:02:35,540 - INFO - 127.0.0.1 - - [24/Nov/2025 20:02:35] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-11-24 20:02:36,601 - INFO - 127.0.0.1 - - [24/Nov/2025 20:02:36] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-24 20:02:44,947 - INFO - Demo Request: user_demo_10
+2025-11-24 20:02:45,588 - WARNING - Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 2.0 seconds as it raised NotFound: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods..
+2025-11-24 20:02:47,802 - WARNING - Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 4.0 seconds as it raised NotFound: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods..
+2025-11-24 20:02:52,012 - WARNING - Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 8.0 seconds as it raised NotFound: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods..
+2025-11-24 20:03:00,228 - WARNING - Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 16.0 seconds as it raised NotFound: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods..
+2025-11-24 20:03:16,461 - WARNING - Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 32.0 seconds as it raised NotFound: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods..
+2025-11-24 20:03:49,172 - INFO - 127.0.0.1 - - [24/Nov/2025 20:03:49] "POST /demo HTTP/1.1" 200 -
+2025-11-24 20:03:54,441 - INFO - Demo Request: user_demo_10
+2025-11-24 20:03:54,688 - WARNING - Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 2.0 seconds as it raised NotFound: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods..
+2025-11-24 20:03:56,916 - WARNING - Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 4.0 seconds as it raised NotFound: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods..
+2025-11-24 20:04:01,128 - WARNING - Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 8.0 seconds as it raised NotFound: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods..
+2025-11-24 20:04:09,331 - WARNING - Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 16.0 seconds as it raised NotFound: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods..
+2025-11-24 20:04:25,549 - WARNING - Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 32.0 seconds as it raised NotFound: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods..
+2025-11-24 20:04:58,100 - INFO - 127.0.0.1 - - [24/Nov/2025 20:04:58] "POST /demo HTTP/1.1" 200 -
+2025-11-24 20:05:05,629 - INFO - Demo Request: user_demo_10
+2025-11-24 20:05:05,929 - INFO - 127.0.0.1 - - [24/Nov/2025 20:05:05] "POST /demo HTTP/1.1" 200 -

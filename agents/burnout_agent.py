@@ -1,19 +1,30 @@
 import json
 import os
+import uuid
+import chromadb # <--- NEW IMPORT
+from datetime import datetime
 from agents.Abstract_Class_Worker_Agent import AbstractWorkerAgent
-from agents.burnout_graph import burnout_app, BurnoutState # Import your graph
+from agents.burnout_graph import burnout_app, BurnoutState 
 
 class BurnoutPreventionAgent(AbstractWorkerAgent):
 
     def __init__(self, agent_id: str, supervisor_id: str):
         super().__init__(agent_id, supervisor_id)
         print(f"[{self._id}] Burnout Agent is online.")
-
-        # Define the path for Long-Term Memory (LTM)
+        
+        # 1. JSON LTM Path (File Storage)
         self._ltm_path = os.path.join("LTM", self._id, "memory.json")
         os.makedirs(os.path.dirname(self._ltm_path), exist_ok=True)
 
-    # In agents/burnout_agent.py
+        # 2. ChromaDB Setup (Vector Storage) - NEW
+        # This creates a local folder 'chroma_db' to store vector memory
+        try:
+            self.chroma_client = chromadb.PersistentClient(path="./chroma_db")
+            self.collection = self.chroma_client.get_or_create_collection(name="burnout_memory")
+            print(f"[{self._id}] ChromaDB initialized.")
+        except Exception as e:
+            print(f"[{self._id}] Warning: ChromaDB failed to init: {e}")
+            self.collection = None
 
     def process_task(self, task_data: dict) -> dict:
         """
@@ -21,83 +32,81 @@ class BurnoutPreventionAgent(AbstractWorkerAgent):
         It runs the LangGraph brain.
         """
         print(f"[{self._id}] processing task: {task_data}")
-
-        # 1. READ from LTM first
+        
+        # 1. Check LTM (JSON) first
         current_history = self.read_from_ltm() or []
-
-        # 2. Prepare the initial state for the graph
+        
+        # Prepare the initial state for the graph
         initial_state = BurnoutState(
             input_data=task_data,
             history=current_history,
             burnout_risk="unknown",
             is_trend=False,
-
             key_factors=[],
             empathetic_response="",
-            actionable_steps=[],       # <-- NEW
-            conversation_starter="", # <-- NEW
-
+            actionable_steps=[],
+            conversation_starter="",
             recommendation="",
             final_response={}
         )
-
-        # 3. Run the LangGraph
+        
+        # 2. Run the LangGraph
         final_state = burnout_app.invoke(initial_state)
         
-        # 4. WRITE the result back to LTM
-        # Create a new log entry
+        # 3. WRITE results to Memory (Both JSON and Chroma)
         log_entry = {
-            "timestamp": "...", # Add a real timestamp
+            "timestamp": datetime.now().isoformat(),
             "input_data": task_data,
             "final_response": final_state['final_response']
         }
-        self.write_to_ltm(log_entry) # This will append the new entry
+        self.write_to_ltm(log_entry) # <-- This now saves to both!
 
-        # 5. Return the results
         return final_state['final_response']
 
-    # --- Required Methods from Abstract Class ---
+    # --- Required Methods ---
 
     def send_message(self, recipient: str, message_obj: dict):
-        """
-        In a real MAS, this would send to a message queue (e.g., RabbitMQ).
-        For this project, the Flask app will handle the response,
-        so this method might just log the action.
-        """
         print(f"[{self._id}] sending message to {recipient}: {json.dumps(message_obj)}")
-        # In our setup, the Flask return is the "send"
         pass
 
-    # In agents/burnout_agent.py
-
     def write_to_ltm(self, entry: dict) -> bool:
-        """Appends a new entry to the LTM JSON log."""
+        """Writes data to JSON AND ChromaDB."""
         try:
-            # Read the entire history
+            # A. Write to JSON (Standard Storage)
             history = self.read_from_ltm() or []
-            # Add the new entry
             history.append(entry)
-            
-            # Write the entire history back
             with open(self._ltm_path, 'w') as f:
                 json.dump(history, f, indent=2)
             
-            print(f"[{self._id}] Wrote new entry to LTM.")
+            # B. Write to ChromaDB (Vector Storage) - NEW
+            if self.collection:
+                doc_id = str(uuid.uuid4())
+                risk_level = entry.get('final_response', {}).get('risk_level', 'unknown')
+                user_id = entry.get('input_data', {}).get('employee_id', 'unknown')
+                
+                # We convert the full entry dict to a string for storage
+                document_text = json.dumps(entry)
+                
+                self.collection.add(
+                    documents=[document_text],
+                    metadatas=[{"risk": risk_level, "user": user_id}], # Metadata for filtering
+                    ids=[doc_id]
+                )
+            
+            print(f"[{self._id}] Wrote new entry to LTM (JSON + ChromaDB).")
             return True
         except Exception as e:
             print(f"[{self._id}] ERROR writing to LTM: {e}")
             return False
 
     def read_from_ltm(self) -> any:
-        """Reads the entire LTM log."""
+        """Reads data from the LTM JSON file."""
         try:
             if not os.path.exists(self._ltm_path):
-                return []  # Return an empty list if no memory exists
-            
+                return []
             with open(self._ltm_path, 'r') as f:
                 data = json.load(f)
             return data
-        
         except Exception as e:
             print(f"[{self._id}] ERROR reading from LTM: {e}")
             return None

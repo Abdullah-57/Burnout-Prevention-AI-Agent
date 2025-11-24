@@ -36,3 +36,9 @@ Invoke-RestMethod -Uri http://127.0.0.1:5001/api/v1/task -Method POST -ContentTy
 ```powershell
 Invoke-RestMethod -Uri http://127.0.0.1:5001/api/v1/task -Method POST -ContentType 'application/json' -Body '{"message_id":"t3","task":{"parameters":{"employee_id":"trend_user_X","stress":5,"work_hours":9,"sleep_hours":6,"mood":"ok"}}}' | ConvertTo-Json -Depth 5
 ```
+
+The "Low Risk" Path (Fast Path)
+Invoke-RestMethod -Uri http://127.0.0.1:5001/api/v1/task -Method POST -ContentType 'application/json' -Body '{"message_id":"test_reasoning_low","task":{"parameters":{"employee_id":"user_low","stress":2,"work_hours":8,"sleep_hours":8,"mood":"happy"}}}'
+
+The "High Risk" Path (Deep Path)
+Invoke-RestMethod -Uri http://127.0.0.1:5001/api/v1/task -Method POST -ContentType 'application/json' -Body '{"message_id":"test_reasoning_high","task":{"parameters":{"employee_id":"user_high","stress":9,"work_hours":12,"sleep_hours":4,"mood":"frustrated"}}}'

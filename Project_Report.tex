@@ -11,11 +11,33 @@
 \usepackage{amsmath}
 \usepackage{tabularx}
 \usepackage{array}
+\usepackage{xcolor}
+
+% Define colors for headings
+\definecolor{navyblue}{RGB}{0,0,128}
+\definecolor{darknavyblue}{RGB}{0,0,100}
+\definecolor{darkernavyblue}{RGB}{0,0,80}
+\definecolor{darkestnavyblue}{RGB}{0,0,60}
 
 % Title formatting
 \titleformat{\chapter}[display]
-{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+{\normalfont\huge\bfseries\color{navyblue}}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
 \titlespacing*{\chapter}{0pt}{-20pt}{20pt}
+
+% Section formatting (subheading level 1)
+\titleformat{\section}
+{\normalfont\Large\bfseries\color{darknavyblue}}{\thesection}{1em}{}
+
+% Subsection formatting (subheading level 2)
+\titleformat{\subsection}
+{\normalfont\large\bfseries\color{darkernavyblue}}{\thesubsection}{1em}{}
+
+% Subsubsection formatting (subheading level 3)
+\titleformat{\subsubsection}
+{\normalfont\normalsize\bfseries\color{darkestnavyblue}}{\thesubsubsection}{1em}{}
+
+% List of Figures spacing (match List of Tables)
+\renewcommand{\cftfigafterpnum}{\vskip0.3cm}
 
 % Hyperref setup
 \hypersetup{
@@ -38,8 +60,11 @@
     
     \vspace{1cm}
     
-    {\Huge\bfseries Software Project Management\\[0.3cm]
-    Project Report}
+    {\Huge\bfseries Fundamentals of Software Project Management}\\[0.3cm]
+
+    \vspace{1cm}
+    
+    {\LARGE\bfseries Project Report}\\[0.3cm]
     
     \vspace{1cm}
     
@@ -565,7 +590,7 @@ The agent's internal logic utilizes a LangGraph State Machine to orchestrate dec
 
 \begin{itemize}
     \item \textbf{The Fast Path:} Purely deterministic logic for low-risk scenarios, ensuring speed and zero inference costs.
-    \item \textbf{The Deep Path:} Utilization of Google Gemini 1.5 Flash for high-risk scenarios requiring semantic understanding and empathy.
+    \item \textbf{The Deep Path:} Utilization of Google Gemini 2.5 Flash for high-risk scenarios requiring semantic understanding and empathy.
 \end{itemize}
 
 \section{Architecture Diagram}
@@ -673,7 +698,7 @@ We encountered severe version mismatches between langchain-core and langchain-go
 
 The initial design relied on gemini-pro, which returned 404 errors due to API deprecation.
 
-\textbf{Resolution:} Developed a utility script (check\_models.py) to dynamically query available models, switching to the stable gemini-1.5-flash.
+\textbf{Resolution:} Developed a utility script (check\_models.py) to dynamically query available models, switching to the stable gemini-2.5-flash.
 
 \subsection{Logic Overwrites}
 

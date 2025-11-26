@@ -1,0 +1,688 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{tabularx}
+\usepackage{array}
+
+% Title formatting
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{-20pt}{20pt}
+
+% Hyperref setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Software Project Management Report},
+    pdfpagemode=FullScreen,
+}
+
+\begin{document}
+
+% Cover Page
+\begin{titlepage}
+    \centering
+    \vspace*{0.5cm}
+    
+    \includegraphics[width=0.4\textwidth]{FASTLogo (1).jpg}
+    
+    \vspace{1cm}
+    
+    {\Huge\bfseries Software Project Management\\[0.3cm]
+    Project Report}
+    
+    \vspace{1cm}
+    
+    {\Large\bfseries Course Instructor}\\[0.2cm]
+    {\large Dr. Uzma Mahar}
+    
+    \vspace{0.8cm}
+    
+    {\Large\bfseries Group Members}\\[0.3cm]
+    \begin{tabular}{ll}
+        Abdullah Daoud & (22I-2626) \\
+        Usman Ali & (22I-2725) \\
+        Faizan Rasheed & (22I-2734) \\
+    \end{tabular}
+    
+    \vspace{0.8cm}
+    
+    {\Large\bfseries Section}\\[0.2cm]
+    {\large SE-E}
+    
+    \vspace{0.5cm}
+    
+    {\Large\bfseries Date}\\[0.2cm]
+    {\large Sunday, November 30th, 2025}
+    
+    \vspace{0.3cm}
+    
+    {\large Fall 2025}
+    
+    \vfill
+    
+    {\large Department of Software Engineering\\
+    FAST -- National University\\
+    Islamabad Campus}
+    
+\end{titlepage}
+
+% Table of Contents
+\tableofcontents
+\newpage
+
+% List of Tables
+\listoftables
+\newpage
+
+% List of Figures
+\listoffigures
+\newpage
+
+\chapter{Project Overview \& Objectives}
+
+\section{Project Justification}
+Workplace burnout is a rising crisis in modern software development environments, leading to decreased productivity, high turnover, and health issues. The ``Burnout Prevention Agent'' was conceived to address this by providing an automated, privacy-focused, and empathetic monitoring system. Unlike static surveys, this agent acts as a proactive worker within a Multi-Agent System (MAS), capable of analyzing real-time well-being metrics and intervening before burnout becomes critical.
+
+\section{Objectives \& Goals}
+The primary goal was to develop a Hybrid AI Agent that integrates rule-based reliability with Generative AI empathy. Key objectives achieved include:
+
+\begin{itemize}
+    \item \textbf{Autonomous Monitoring:} The agent operates as an independent microservice, listening for tasks from a Supervisor Agent.
+    \item \textbf{Trend Detection:} Utilizing persistent Long-Term Memory (LTM) to identify chronic stress patterns rather than just isolated incidents.
+    \item \textbf{Actionable Intervention:} Providing structured, AI-generated advice (e.g., conversation starters for managers) rather than generic warnings.
+    \item \textbf{Scalable Architecture:} Implementing a ``Reasoning Router'' to optimize costs by switching between fast templates for low-risk users and deep LLM reasoning for high-risk users.
+\end{itemize}
+
+\chapter{Project Management Artifacts}
+
+\section{Work Breakdown Structure (WBS)}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{Graphical WBS.png}
+    \caption{Work Breakdown Structure}
+    \label{fig:wbs}
+\end{figure}
+
+\section{Project Schedule}
+
+\begin{longtable}{|>{\centering\arraybackslash}p{1.2cm}|p{4.5cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2.2cm}|>{\centering\arraybackslash}p{2.2cm}|p{2.5cm}|}
+\caption{Project Schedule: WBS} \label{tab:schedule} \\
+\hline
+\textbf{WBS} & \textbf{Activity Name} & \textbf{Duration} & \textbf{Updated Start} & \textbf{Updated Finish} & \textbf{Change Status} \\
+\hline
+\endfirsthead
+
+\multicolumn{6}{c}%
+{{\bfseries Table \thetable\ continued from previous page}} \\
+\hline
+\textbf{WBS} & \textbf{Activity Name} & \textbf{Duration} & \textbf{Updated Start} & \textbf{Updated Finish} & \textbf{Change Status} \\
+\hline
+\endhead
+
+\hline \multicolumn{6}{|r|}{{Continued on next page}} \\ \hline
+\endfoot
+
+\hline
+\endlastfoot
+
+1.0 & Initiation Phase & 7 Days & Sep 14 & Sep 20 & No Change \\[0.3cm]
+\hline
+1.1 & Draft Project Charter & 2 Days & Sep 14 & Sep 15 & No Change \\[0.3cm]
+\hline
+1.2 & Stakeholder Identification & 2 Days & Sep 14 & Sep 15 & No Change \\[0.3cm]
+\hline
+1.3 & Kick-off Meeting & 2 Days & Sep 17 & Sep 18 & No Change \\[0.3cm]
+\hline
+1.4 & Approval \& Authorization & 2 Days & Sep 19 & Sep 20 & No Change \\[0.3cm]
+\hline
+2.0 & Planning Phase & 15 Days & Sep 21 & Oct 05 & No Change \\[0.3cm]
+\hline
+2.1 & Create WBS \& Gantt Chart & 3 Days & Sep 21 & Sep 23 & No Change \\[0.3cm]
+\hline
+2.2 & Define Scope Statement & 2 Days & Sep 24 & Sep 25 & No Change \\[0.3cm]
+\hline
+2.3 & Risk \& Quality Plans & 4 Days & Sep 26 & Sep 29 & No Change \\[0.3cm]
+\hline
+2.4 & API Integration Strategy & 3 Days & Sep 30 & Oct 02 & No Change \\[0.3cm]
+\hline
+2.5 & Baseline Gantt Chart & 3 Days & Oct 03 & Oct 05 & No Change \\[0.3cm]
+\hline
+3.0 & Design Phase & 15 Days & Oct 06 & Oct 20 & No Change \\[0.3cm]
+\hline
+3.1 & UI/UX Wireframes & 3 Days & Oct 06 & Oct 08 & No Change \\[0.3cm]
+\hline
+3.2 & Backend Architecture Design & 3 Days & Oct 09 & Oct 11 & No Change \\[0.3cm]
+\hline
+3.3 & Synthetic Dataset Schema & 3 Days & Oct 11 & Oct 13 & No Change \\[0.3cm]
+\hline
+3.4 & Rules \& Heuristics Def & 4 Days & Oct 13 & Oct 16 & No Change \\[0.3cm]
+\hline
+3.5 & Prototype API Mockup & 4 Days & Oct 17 & Oct 20 & No Change \\[0.3cm]
+\hline
+4.0 & Implementation Phase & 21 Days & Oct 21 & Nov 10 & No Change \\[0.3cm]
+\hline
+4.1 & Backend Logic Dev & 6 Days & Oct 21 & Oct 26 & No Change \\[0.3cm]
+\hline
+4.2 & Frontend Development & 7 Days & Oct 26 & Nov 01 & No Change \\[0.3cm]
+\hline
+4.3 & Synthetic Data Gen & 3 Days & Nov 01 & Nov 03 & No Change \\[0.3cm]
+\hline
+4.4 & Unit Testing & 3 Days & Nov 04 & Nov 06 & No Change \\[0.3cm]
+\hline
+4.5 & Code Review \& Docs & 4 Days & Nov 07 & Nov 10 & No Change \\[0.3cm]
+\hline
+5.0 & Integration Phase & 18 Days & Nov 11 & Nov 28 & EXTENDED (+3 Days) \\[0.3cm]
+\hline
+5.1 & API Integration & 4 Days & Nov 11 & Nov 14 & No Change \\[0.3cm]
+\hline
+5.2 & Integration Testing & 4 Days & Nov 18 & Nov 21 & SHIFTED (Moved to Week 10) \\[0.3cm]
+\hline
+5.3 & Bug Fixes \& Refinement & 4 Days & Nov 22 & Nov 25 & SHIFTED (Dependency) \\[0.3cm]
+\hline
+5.4 & Test Documentation & 3 Days & Nov 26 & Nov 28 & SHIFTED (Dependency) \\[0.3cm]
+\hline
+6.0 & Deployment Phase & 5 Days & Nov 29 & Dec 02 & SHIFTED (+3 Days) \\[0.3cm]
+\hline
+6.1 & Deployment Build & 2 Days & Nov 29 & Nov 30 & SHIFTED (Dependency) \\[0.3cm]
+\hline
+6.2 & Upload to Demo Env & 2 Days & Nov 30 & Dec 01 & SHIFTED (Dependency) \\[0.3cm]
+\hline
+6.3 & User Guide \& Training & 2 Days & Dec 01 & Dec 02 & SHIFTED (Dependency) \\[0.3cm]
+\hline
+6.4 & Handover Demo & 1 Day & Dec 02 & Dec 02 & SHIFTED (Dependency) \\[0.3cm]
+\hline
+7.0 & Monitoring Phase & 7 Days & Dec 03 & Dec 09 & SHIFTED (+2 Days) \\[0.3cm]
+\hline
+7.1 & Feedback Collection & 2 Days & Dec 03 & Dec 04 & SHIFTED \\[0.3cm]
+\hline
+7.2 & Alert Accuracy Review & 3 Days & Dec 04 & Dec 06 & SHIFTED \\[0.3cm]
+\hline
+7.3 & Minor Updates & 3 Days & Dec 06 & Dec 08 & SHIFTED \\[0.3cm]
+\hline
+7.4 & Enhancement Summary & 2 Days & Dec 08 & Dec 09 & SHIFTED \\[0.3cm]
+\hline
+8.0 & Closing Phase & 12 Days & Nov 28 & Dec 12 & CHANGED (Fast-Tracked) \\[0.3cm]
+\hline
+8.1 & Lessons Learned & 2 Days & Dec 08 & Dec 09 & No Change \\[0.3cm]
+\hline
+8.2 & Final Report Compilation & 12 Days & Nov 28 & Dec 10 & STARTED EARLY (Week 11) \\[0.3cm]
+\hline
+8.3 & Sign-offs & 1 Day & Dec 11 & Dec 11 & No Change \\[0.3cm]
+\hline
+8.4 & Archive Artifacts & 1 Day & Dec 12 & Dec 12 & No Change \\[0.3cm]
+\hline
+\end{longtable}
+
+\section{Resource Utilization Analysis}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{Initial and Levelled Resource Usage Histogram.png}
+    \caption{Resource Utilization Analysis (Before vs. After Leveling)}
+    \label{fig:resource-histogram}
+\end{figure}
+
+To ensure project viability, a detailed Resource Loading analysis was conducted to map the workload of each team member against the maximum capacity of 20 hours/week.
+
+\subsection{Initial Analysis (Pre-Leveling)}
+
+The initial schedule revealed critical resource bottlenecks that posed a risk to project delivery:
+
+\begin{itemize}
+    \item \textbf{Tech Lead Overload:} A continuous period of maximum utilization (100\% capacity) was identified during the Design and Implementation phases (Weeks 4--6), leaving zero margin for technical debt or debugging.
+    \item \textbf{Integration Conflict (Week 9):} A major conflict was detected where the Integration Lead was scheduled for 25 hours, exceeding the safety limit by 25\% due to overlapping API testing tasks.
+    \item \textbf{Closing Phase Spike (Week 13):} The Project Manager faced a surge of 27 hours in the final week due to simultaneous documentation and archiving duties.
+\end{itemize}
+
+\subsection{Optimization Strategy (Post-Leveling)}
+
+To resolve these conflicts without extending the project deadline, we applied Resource Leveling techniques:
+
+\begin{itemize}
+    \item \textbf{Task Splitting:} Integration Testing (WBS 5.2) was decoupled from API Integration, shifting the bulk of the testing effort to Week 10.
+    \item \textbf{Fast-Tracking:} The Final Report (WBS 8.2) was fast-tracked to begin in Week 11 (Deployment Phase), utilizing available slack time to reduce the pressure on Week 13.
+\end{itemize}
+
+\subsection{Result}
+
+As illustrated in the Histograms, the leveled plan successfully smooths the workload. The peak team utilization is now capped at a sustainable 40 hours total (combined), with no individual member exceeding their 20-hour limit, ensuring a steady and burnout-free execution workflow.
+
+\section{Cost Estimation}
+
+\begin{center}
+\small
+\begin{longtable}{|p{2.5cm}|>{\centering\arraybackslash}p{1cm}|p{3.5cm}|>{\centering\arraybackslash}p{1.5cm}|>{\centering\arraybackslash}p{1cm}|>{\centering\arraybackslash}p{1.5cm}|>{\centering\arraybackslash}p{1.5cm}|}
+\caption{Cost Estimation} \label{tab:cost} \\
+\hline
+\textbf{Phase} & \textbf{WBS} & \textbf{Cost Item/Activity} & \textbf{Quantity} & \textbf{Unit} & \textbf{Unit Cost (\$)} & \textbf{Subtotal (\$)} \\
+\hline
+\endfirsthead
+
+\multicolumn{7}{c}%
+{{\bfseries Table \thetable\ continued from previous page}} \\
+\hline
+\textbf{Phase} & \textbf{WBS} & \textbf{Cost Item/Activity} & \textbf{Quantity} & \textbf{Unit} & \textbf{Unit Cost (\$)} & \textbf{Subtotal (\$)} \\
+\hline
+\endhead
+
+\hline \multicolumn{7}{|r|}{{Continued on next page}} \\ \hline
+\endfoot
+
+\hline
+\endlastfoot
+
+Phase 1: Initiation & 1.1 & Draft Project Charter & 2 & days & \$150.00 & \$300.00 \\[0.3cm]
+\hline
+Phase 1: Initiation & 1.2 & Stakeholder Identification & 2 & days & \$150.00 & \$300.00 \\[0.3cm]
+\hline
+Phase 1: Initiation & 1.3 & Kick-off Meeting & 3 & person-days & \$150.00 & \$450.00 \\[0.3cm]
+\hline
+Phase 1: Initiation & 1.4 & Approval \& Authorization & 2 & days & \$150.00 & \$300.00 \\[0.3cm]
+\hline
+\multicolumn{6}{|r|}{\textbf{Phase 1 Subtotal:}} & \textbf{\$1,350.00} \\[0.3cm]
+\hline
+Phase 2: Planning & 2.1 & WBS \& Gantt Development & 9 & person-days & \$150.00 & \$1,350.00 \\[0.3cm]
+\hline
+Phase 2: Planning & 2.2 & Scope Documentation & 2 & days & \$150.00 & \$300.00 \\[0.3cm]
+\hline
+Phase 2: Planning & 2.3 & Risk \& Quality Planning & 4 & days & \$150.00 & \$600.00 \\[0.3cm]
+\hline
+Phase 2: Planning & 2.4 & API Integration Planning & 3 & days & \$150.00 & \$450.00 \\[0.3cm]
+\hline
+Phase 2: Planning & 2.5 & Project Management Software & 1 & license & \$50.00 & \$50.00 \\[0.3cm]
+\hline
+\multicolumn{6}{|r|}{\textbf{Phase 2 Subtotal:}} & \textbf{\$2,750.00} \\[0.3cm]
+\hline
+Phase 3: Design & 3.1 & UI/UX Design & 3 & days & \$175.00 & \$525.00 \\[0.3cm]
+\hline
+Phase 3: Design & 3.2 & Backend Architecture Design & 3 & days & \$200.00 & \$600.00 \\[0.3cm]
+\hline
+Phase 3: Design & 3.3 & Database Schema Design & 3 & days & \$200.00 & \$600.00 \\[0.3cm]
+\hline
+Phase 3: Design & 3.4 & Rules Engine Design & 4 & days & \$200.00 & \$800.00 \\[0.3cm]
+\hline
+Phase 3: Design & 3.5 & API Mockup Development & 4 & days & \$175.00 & \$700.00 \\[0.3cm]
+\hline
+Phase 3: Design & - & Design Tools \& Software & 1 & license & \$65.00 & \$65.00 \\[0.3cm]
+\hline
+\multicolumn{6}{|r|}{\textbf{Phase 3 Subtotal:}} & \textbf{\$3,290.00} \\[0.3cm]
+\hline
+Phase 4: Implementation & 4.1 & Backend Development (Flask) & 6 & days & \$225.00 & \$1,350.00 \\[0.3cm]
+\hline
+Phase 4: Implementation & 4.2 & Frontend Development & 7 & days & \$200.00 & \$1,400.00 \\[0.3cm]
+\hline
+Phase 4: Implementation & 4.3 & Synthetic Data Generation & 3 & days & \$175.00 & \$525.00 \\[0.3cm]
+\hline
+Phase 4: Implementation & 4.4 & Unit Testing & 3 & days & \$175.00 & \$525.00 \\[0.3cm]
+\hline
+Phase 4: Implementation & 4.5 & Code Review \& Documentation & 4 & days & \$150.00 & \$600.00 \\[0.3cm]
+\hline
+Phase 4: Implementation & - & Development Tools \& IDE & 3 & licenses & \$30.00 & \$90.00 \\[0.3cm]
+\hline
+\multicolumn{6}{|r|}{\textbf{Phase 4 Subtotal:}} & \textbf{\$4,490.00} \\[0.3cm]
+\hline
+Phase 5: Integration & 5.1 & API Integration & 4 & days & \$200.00 & \$800.00 \\[0.3cm]
+\hline
+Phase 5: Integration & 5.2 & Integration Testing & 4 & days & \$175.00 & \$700.00 \\[0.3cm]
+\hline
+Phase 5: Integration & 5.3 & Bug Fixes \& Refinement & 4 & days & \$175.00 & \$700.00 \\[0.3cm]
+\hline
+Phase 5: Integration & 5.4 & Test Documentation & 3 & days & \$150.00 & \$450.00 \\[0.3cm]
+\hline
+Phase 5: Integration & - & Testing Tools & 1 & license & \$100.00 & \$100.00 \\[0.3cm]
+\hline
+\multicolumn{6}{|r|}{\textbf{Phase 5 Subtotal:}} & \textbf{\$2,750.00} \\[0.3cm]
+\hline
+Phase 6: Deployment & 6.1 & Deployment Build & 2 & days & \$200.00 & \$400.00 \\[0.3cm]
+\hline
+Phase 6: Deployment & 6.2 & Demo Environment Setup & 2 & days & \$175.00 & \$350.00 \\[0.3cm]
+\hline
+Phase 6: Deployment & 6.3 & User Documentation & 2 & days & \$150.00 & \$300.00 \\[0.3cm]
+\hline
+Phase 6: Deployment & 6.4 & Handover Demo & 3 & person-days & \$150.00 & \$450.00 \\[0.3cm]
+\hline
+Phase 6: Deployment & - & Cloud Hosting (Demo) & 1 & service & \$50.00 & \$50.00 \\[0.3cm]
+\hline
+\multicolumn{6}{|r|}{\textbf{Phase 6 Subtotal:}} & \textbf{\$1,550.00} \\[0.3cm]
+\hline
+Phase 7: Monitoring & 7.1 & Feedback Collection & 2 & days & \$150.00 & \$300.00 \\[0.3cm]
+\hline
+Phase 7: Monitoring & 7.2 & Alert Accuracy Review & 3 & days & \$175.00 & \$525.00 \\[0.3cm]
+\hline
+Phase 7: Monitoring & 7.3 & Minor Updates & 3 & days & \$175.00 & \$525.00 \\[0.3cm]
+\hline
+Phase 7: Monitoring & 7.4 & Enhancement Documentation & 2 & days & \$150.00 & \$300.00 \\[0.3cm]
+\hline
+\multicolumn{6}{|r|}{\textbf{Phase 7 Subtotal:}} & \textbf{\$1,650.00} \\[0.3cm]
+\hline
+Phase 8: Closing & 8.1 & Lessons Learned Session & 6 & person-days & \$150.00 & \$900.00 \\[0.3cm]
+\hline
+Phase 8: Closing & 8.2 & Final Report Compilation & 2 & days & \$150.00 & \$300.00 \\[0.3cm]
+\hline
+Phase 8: Closing & 8.3 & Sign-offs \& Approvals & 1 & day & \$150.00 & \$150.00 \\[0.3cm]
+\hline
+Phase 8: Closing & 8.4 & Archive \& Knowledge Transfer & 1 & day & \$150.00 & \$150.00 \\[0.3cm]
+\hline
+\multicolumn{6}{|r|}{\textbf{Phase 8 Subtotal:}} & \textbf{\$1,500.00} \\[0.3cm]
+\hline
+\end{longtable}
+\end{center}
+
+\vspace{0.5cm}
+
+\begin{table}[H]
+\centering
+\caption{Cost Summary}
+\label{tab:cost-summary}
+\begin{tabular}{|p{8cm}|>{\centering\arraybackslash}p{2.5cm}|}
+\hline
+\textbf{Cost Summary} & \textbf{Amount (\$)} \\
+\hline
+\textbf{Total Direct Costs} & \textbf{\$19,330.00} \\[0.3cm]
+\hline
+\textbf{Contingency Reserve (15\%)} & \textbf{\$2,899.50} \\[0.3cm]
+\hline
+\textbf{Budget at Completion (BAC)} & \textbf{\$22,229.50} \\[0.3cm]
+\hline
+\end{tabular}
+\end{table}
+
+\section{Risk Management Plan}
+
+\subsection{High-Risk Activities (Zero Slack)}
+
+\begin{itemize}
+    \item 1.1-1.4: All initiation activities
+    \item 2.1-2.2: Core planning activities
+    \item 3.2-3.5: Backend and API design
+    \item 4.1, 4.2, 4.4, 4.5: Development and testing
+    \item 5.1, 5.2, 5.4: Integration activities
+    \item 6.1, 6.3, 6.4: Deployment activities
+    \item 7.4, 8.1-8.4: Final closure activities
+\end{itemize}
+
+\textbf{Risk Mitigation:}
+\begin{itemize}
+    \item Daily progress tracking
+    \item Immediate escalation of delays
+    \item Resource prioritization
+    \item Contingency planning for each activity
+\end{itemize}
+
+\subsection{Medium-Risk Activities (1-4 Days Slack)}
+
+\begin{itemize}
+    \item 4.3: Data generation (3 days)
+    \item 5.3: Bug fixes (3 days)
+    \item 6.2: Environment setup (2 days)
+    \item 7.1-7.3: Monitoring activities (4, 1, 1 days)
+\end{itemize}
+
+\textbf{Risk Mitigation:}
+\begin{itemize}
+    \item Weekly monitoring
+    \item Flexible resource allocation
+    \item Buffer utilization tracking
+\end{itemize}
+
+\subsection{Low-Risk Activities (14+ Days Slack)}
+
+\begin{itemize}
+    \item 2.3: Risk \& Quality Plans (17 days)
+    \item 2.4: API Integration Strategy (14 days)
+    \item 2.5: Baseline Gantt (18 days)
+    \item 3.1: UI/UX Wireframes (18 days)
+\end{itemize}
+
+\textbf{Risk Mitigation:}
+\begin{itemize}
+    \item Biweekly check-ins
+    \item Opportunistic scheduling
+    \item Quality enhancement focus
+\end{itemize}
+
+\section{Quality Management Plan}
+
+This plan defines the quality standards, assurance activities, and control measures implemented to ensure the Burnout Prevention Agent meets the rigorous demands of the Multi-Agent System architecture.
+
+\subsection{Quality Standards}
+
+To ensure reliability and maintainability, the project adheres to the following technical standards:
+
+\begin{itemize}
+    \item \textbf{Code Compliance:} All backend code follows PEP 8 style guidelines for Python, ensuring readability and consistency.
+    \item \textbf{Performance Benchmarks:}
+    \begin{itemize}
+        \item \textbf{Latency:} API response time must remain under 2 seconds for the ``Deep Path'' (LLM) and under 500ms for the ``Fast Path''.
+        \item \textbf{Availability:} The /status endpoint must return 200 OK with 99.9\% uptime during the integration window.
+    \end{itemize}
+    \item \textbf{Interoperability:} Strict adherence to the JSON API Contract provided by the Supervisor specification. Any schema deviation is classified as a Critical Defect.
+\end{itemize}
+
+\subsection{Quality Assurance (QA) -- Prevention}
+
+These proactive measures were established to prevent defects before they occurred:
+
+\begin{itemize}
+    \item \textbf{Architecture Review:} The Hybrid ``Router'' architecture was peer-reviewed to ensure the separation of concerns between deterministic logic (Risk Analysis) and probabilistic generation (AI).
+    \item \textbf{Environment Isolation:} A strict ``Clean Room'' policy for dependency management (using venv) was enforced to prevent version conflicts, a major quality risk identified early in development.
+    \item \textbf{Modular Design:} The use of LangGraph ensures that individual logic nodes (analyze\_risk, generate\_ai\_response) are decoupled, making them easier to test and debug in isolation.
+\end{itemize}
+
+\subsection{Quality Control (QC) -- Detection}
+
+These reactive measures were used to identify and fix defects:
+
+\begin{itemize}
+    \item \textbf{Automated Unit Testing:} A dedicated test suite (test\_agent.py) was developed to validate logic. It automatically runs four distinct scenarios:
+    \begin{itemize}
+        \item \textbf{Happy Path:} Validates low-risk template responses.
+        \item \textbf{Edge Case:} Validates ``High Risk'' scoring logic under boundary conditions (e.g., max work hours).
+        \item \textbf{Semantic Check:} Verifies that the AI output contains empathetic language and actionable steps.
+        \item \textbf{Trend Detection:} Simulates sequential requests to verify that Long-Term Memory (LTM) correctly identifies patterns and escalates risk.
+    \end{itemize}
+    \item \textbf{Integration Validation:} The test\_agent.py script generates unique, timestamped User IDs for every run to prevent data collision in the LTM, ensuring every test run is a ``clean'' integration test.
+\end{itemize}
+
+\section{Recommendations}
+
+\subsection{Schedule Management}
+
+\textbf{Address Negative Slack Immediately:}
+\begin{itemize}
+    \item Phase 8 activities show -1 to -7 days slack
+    \item Current completion: Day 88 vs. Target: Day 81
+    \item Implement schedule compression in Phases 4-5 to recover 7 days
+\end{itemize}
+
+\textbf{Monitor Critical Path Rigorously:}
+\begin{itemize}
+    \item 25 critical activities require daily tracking
+    \item Any delay requires immediate corrective action
+    \item Establish early warning system for at-risk tasks
+\end{itemize}
+
+\textbf{Leverage Parallel Paths:}
+\begin{itemize}
+    \item Utilize 18-day buffer in 2.5, 3.1 for quality improvements
+    \item Utilize 17-day buffer in 2.3 for comprehensive risk planning
+    \item Execute monitoring activities (7.1-7.3) efficiently with 4-day buffer
+\end{itemize}
+
+\subsection{Resource Allocation}
+
+\textbf{Prioritize Critical Path:}
+\begin{itemize}
+    \item Assign best resources to 25 critical activities
+    \item Ensure no resource conflicts on critical path
+    \item Maintain backup resources for critical tasks
+\end{itemize}
+
+\textbf{Optimize Non-Critical Activities:}
+\begin{itemize}
+    \item Use junior resources for activities with 14+ days slack
+    \item Schedule around critical path demands
+    \item Focus on quality over speed for 2.3, 2.5, 3.1
+\end{itemize}
+
+\subsection{Risk Management}
+
+\textbf{Establish Milestone Gates:}
+\begin{itemize}
+    \item End of each phase requires formal review
+    \item Critical path activities need approval to proceed
+    \item Buffer consumption tracking at gates
+\end{itemize}
+
+\textbf{Create Recovery Plans:}
+\begin{itemize}
+    \item Pre-planned crashing options for critical tasks
+    \item Fast-tracking strategies ready for deployment
+    \item Scope reduction options as last resort
+\end{itemize}
+
+\chapter{System Design \& Architecture}
+
+\section{Architectural Pattern}
+
+The system follows a Supervisor-Worker architectural pattern, implemented as a RESTful microservice. The agent is containerized and exposes a strict API contract, allowing it to function as a ``black box'' logic unit within a larger Multi-Agent System.
+
+\section{Hybrid Intelligence Design}
+
+The agent's internal logic utilizes a LangGraph State Machine to orchestrate decision-making. This allows for ``Conditional Reasoning''---the agent dynamically selects a processing path based on initial data analysis:
+
+\begin{itemize}
+    \item \textbf{The Fast Path:} Purely deterministic logic for low-risk scenarios, ensuring speed and zero inference costs.
+    \item \textbf{The Deep Path:} Utilization of Google Gemini 1.5 Flash for high-risk scenarios requiring semantic understanding and empathy.
+\end{itemize}
+
+\section{Architecture Diagram}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{System Architecture.png}
+    \caption{System Architecture}
+    \label{fig:architecture}
+\end{figure}
+
+\chapter{Memory Strategy}
+
+\section{Short-Term Memory (STM)}
+
+STM is managed via the LangGraph State Schema (BurnoutState). This is a typed dictionary that exists only during the lifecycle of a single HTTP request. It temporarily holds the input parameters, intermediate risk scores, and the generated AI response before the final JSON is returned to the supervisor.
+
+\section{Long-Term Memory (LTM) - Dual Storage Strategy}
+
+To meet the requirement for robust data retention and retrieval, a dual-write strategy was implemented:
+
+\begin{itemize}
+    \item \textbf{Sequential Storage (JSON):} A structured memory.json log is used for Time-Series Analysis. This allows the agent to efficiently look back at the last $N$ entries to detect trends.
+    \item \textbf{Vector Storage (ChromaDB):} A semantic vector database stores the embeddings of every interaction. This satisfies the advanced storage requirement and future-proofs the agent, allowing for semantic queries.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{Memory Storage.png}
+    \caption{Memory Storage Architecture}
+    \label{fig:memory}
+\end{figure}
+
+\chapter{API Contract}
+
+The agent exposes a strict JSON contract over HTTP/1.1.
+
+\section{Request Format (Task Assignment)}
+
+\textbf{Endpoint:} POST /api/v1/task
+
+\begin{verbatim}
+{
+    "message_id": "msg_unique_id",
+    "sender": "SupervisorAgent_Main",
+    "type": "task_assignment",
+    "task": {
+        "name": "analyze_wellbeing",
+        "parameters": {
+            "employee_id": "user_123",
+            "stress": 8,
+            "work_hours": 10,
+            "sleep_hours": 5,
+            "mood": "frustrated"
+        }
+    }
+}
+\end{verbatim}
+
+\section{Response Format (Completion Report)}
+
+\begin{verbatim}
+{
+    "message_id": "msg_response_id",
+    "sender": "WorkerAgent_BurnoutPrevention",
+    "type": "completion_report",
+    "status": "SUCCESS",
+    "results": {
+        "risk_level": "high",
+        "is_trend": false,
+        "key_factors": ["high_stress", "poor_sleep", 
+                        "negative_mood"],
+        "empathetic_suggestion": "I am sorry to hear 
+                                  you are feeling...",
+        "actionable_steps": ["Take a 15-minute break", 
+                             "Schedule deep work blocks"],
+        "conversation_starter": "Hi Manager, I need to 
+                                 discuss my capacity..."
+    },
+    "timestamp": "2025-11-30T12:00:00"
+}
+\end{verbatim}
+
+\chapter{Integration Plan}
+
+The integration strategy ensures the agent can be ``plugged in'' to the Supervisor system with zero configuration changes.
+
+\begin{itemize}
+    \item \textbf{Discovery:} The agent broadcasts availability via a heartbeat endpoint (GET /api/v1/status).
+    \item \textbf{Error Isolation:} The agent wraps all internal logic in try/except blocks. If the AI service is down, the agent degrades gracefully to a ``Fallback Mode'' rather than crashing the Supervisor's workflow.
+    \item \textbf{Environment Isolation:} All dependencies are encapsulated in a virtual environment to prevent conflicts with the host system.
+\end{itemize}
+
+\chapter{Progress \& Lessons Learned}
+
+\section{Challenges Faced \& Resolutions}
+
+\subsection{Dependency Conflicts}
+
+We encountered severe version mismatches between langchain-core and langchain-google-genai, causing ModuleNotFoundError for Pydantic objects.
+
+\textbf{Resolution:} Adopted a ``Clean Room'' installation strategy, utilizing a dedicated Developer Command Prompt to rebuild the virtual environment from scratch.
+
+\subsection{Model Deprecation}
+
+The initial design relied on gemini-pro, which returned 404 errors due to API deprecation.
+
+\textbf{Resolution:} Developed a utility script (check\_models.py) to dynamically query available models, switching to the stable gemini-1.5-flash.
+
+\subsection{Logic Overwrites}
+
+Early rule-based logic allowed lower-priority factors to overwrite high-priority ones.
+
+\textbf{Resolution:} Implemented a ``Max-Score'' algorithm (risk = max(current, new)) to ensure risk levels can only escalate, never downgrade falsely.
+
+\section{Final Status}
+
+The project is 100\% complete. The agent successfully demonstrates reasoning capabilities, persistent memory, and seamless API integration, fulfilling all functional requirements set forth in the Project Charter.
+
+\end{document}

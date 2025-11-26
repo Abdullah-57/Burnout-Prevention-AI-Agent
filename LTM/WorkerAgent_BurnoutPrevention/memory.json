@@ -2163,5 +2163,32 @@
       "is_trend": false,
       "analysis_complete": true
     }
+  },
+  {
+    "timestamp": "2025-11-26T09:37:44.627648",
+    "input_data": {
+      "employee_id": "user_demo_13",
+      "stress": 10,
+      "work_hours": 16,
+      "sleep_hours": 8,
+      "mood": "anxious"
+    },
+    "final_response": {
+      "risk_level": "high",
+      "empathetic_suggestion": "It sounds like you're carrying a very heavy load right now, and it's completely understandable to feel the impact of high stress, long hours, and a negative mood. Please know that your well-being is a priority, and we're here to support you in finding a healthier balance.",
+      "key_factors": [
+        "high_stress",
+        "long_work_hours",
+        "negative_mood"
+      ],
+      "actionable_steps": [
+        "Block out 15-30 minutes on your calendar today for a non-work activity, like a short walk or listening to calming music.",
+        "Review your current task list and identify one task you can delegate or postpone to ease your immediate workload.",
+        "Commit to a strict 'stop work' time tonight, even if you feel tasks are unfinished, to ensure some personal time."
+      ],
+      "conversation_starter": "Could we schedule a brief meeting soon? I'd like to discuss my current project load and explore ways to optimize my workflow and well-being.",
+      "is_trend": false,
+      "analysis_complete": true
+    }
   }
 ]

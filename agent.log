@@ -255,3 +255,16 @@ werkzeug.exceptions.BadRequest: 400 Bad Request: Failed to decode JSON object: E
 2025-11-24 20:21:02,475 - INFO - Received Task: {"message_id": "test_reasoning_high", "task": {"parameters": {"employee_id": "user_high", "stress": 9, "work_hours": 12, "sleep_hours": 4, "mood": "frustrated"}}}
 2025-11-24 20:21:07,394 - INFO - Task Completed. Result Risk: high
 2025-11-24 20:21:07,395 - INFO - 127.0.0.1 - - [24/Nov/2025 20:21:07] "POST /api/v1/task HTTP/1.1" 200 -
+2025-11-26 09:36:46,090 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-11-26 09:36:46,663 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-11-26 09:36:46,663 - INFO - [33mPress CTRL+C to quit[0m
+2025-11-26 09:36:46,666 - INFO -  * Restarting with stat
+2025-11-26 09:36:51,589 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-11-26 09:36:51,859 - WARNING -  * Debugger is active!
+2025-11-26 09:36:51,879 - INFO -  * Debugger PIN: 720-859-578
+2025-11-26 09:37:06,352 - INFO - 127.0.0.1 - - [26/Nov/2025 09:37:06] "GET / HTTP/1.1" 200 -
+2025-11-26 09:37:09,037 - INFO - 127.0.0.1 - - [26/Nov/2025 09:37:09] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-11-26 09:37:10,783 - INFO - 127.0.0.1 - - [26/Nov/2025 09:37:10] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-26 09:37:39,433 - INFO - Demo Request: user_demo_13
+2025-11-26 09:37:46,718 - INFO - 127.0.0.1 - - [26/Nov/2025 09:37:46] "POST /demo HTTP/1.1" 200 -
